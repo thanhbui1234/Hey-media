@@ -1,6 +1,6 @@
 "use client";
-
 import Header from "@/app/components/Layouts/Header";
+import { Toaster } from "sonner";
 import Footer from "../components/Layouts/Footer";
 import SlideFoot from "../components/Layouts/SlideFoot";
 export default function PublicLayout({
@@ -14,7 +14,10 @@ export default function PublicLayout({
       <Header />
 
       {/* Main content */}
+      <Toaster richColors position="top-center" />
       <main className="">{children}</main>
+
+      <SlideFoot />
 
       {/* Footer */}
       <Footer />

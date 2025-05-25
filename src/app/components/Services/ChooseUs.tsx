@@ -76,7 +76,7 @@ const ChooseUs = () => {
             </p>
           </div>
           <ButtonCustom
-            text="Book a tour"
+            text="Book our services"
             className="bg-white mt-5 text-black cursor-pointer"
             onClick={() => {}}
           />

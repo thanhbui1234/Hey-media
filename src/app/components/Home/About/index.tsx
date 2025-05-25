@@ -26,7 +26,7 @@ export default function AboutCompany() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white text-left"
+            className="text-3xl md:text-5xl font-bold text-white text-left leading-tight" // <-- thêm dòng này
           >
             Về công ty chúng tôi
           </motion.h2>

@@ -65,7 +65,7 @@ const Header = () => {
 
         {/* Desktop Let's Talk Button */}
         <Link
-          href="#contact"
+          href="/contact"
           className="hidden md:block bg-white text-black font-semibold px-6 py-2 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors hover:bg-orange-100"
           tabIndex={0}
           aria-label="Let's Talk"
@@ -125,7 +125,7 @@ const Header = () => {
             ))}
             <li className="p-4">
               <Link
-                href="#contact"
+                href="contact"
                 className="block w-full bg-orange-500 text-white font-semibold px-6 py-3 rounded-full text-center shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors hover:bg-orange-600"
                 onClick={handleToggleMobileMenu}
                 tabIndex={0}

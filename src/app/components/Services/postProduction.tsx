@@ -12,43 +12,43 @@ import {
 
 const services = [
   {
-    title: "Video Editing",
-    desc: "Our skilled editors meticulously assemble and edit the footage, creating a seamless, coherent, and compelling narrative.",
+    title: "Biên Tập Video",
+    desc: "Đội ngũ biên tập viên chuyên nghiệp của chúng tôi sẽ tỉ mỉ lắp ghép và chỉnh sửa footage, tạo nên một câu chuyện mạch lạc, liền mạch và hấp dẫn.",
     icon: FiVideo,
   },
   {
-    title: "Color Grading",
-    desc: "We enhance the visuals by applying color grading techniques for a professional finish.",
+    title: "Chỉnh Màu",
+    desc: "Chúng tôi nâng cao chất lượng hình ảnh bằng kỹ thuật chỉnh màu chuyên nghiệp để tạo nên sản phẩm hoàn hảo.",
     icon: FiSliders,
   },
   {
-    title: "Audio Enhancement",
-    desc: "We provide audio enhancement services to ensure crystal clear message delivery.",
+    title: "Xử Lý Âm Thanh",
+    desc: "Chúng tôi cung cấp dịch vụ xử lý âm thanh để đảm bảo thông điệp được truyền tải rõ ràng và chất lượng.",
     icon: FiVolume2,
   },
   {
-    title: "3D Animation and CGI",
-    desc: "We offer 3D animation and CGI services for immersive visual effects.",
+    title: "Hoạt Hình 3D và CGI",
+    desc: "Chúng tôi cung cấp dịch vụ hoạt hình 3D và CGI để tạo hiệu ứng hình ảnh sống động.",
     icon: FiCpu,
   },
   {
-    title: "Subtitles and Closed Captions",
-    desc: "We add subtitles and captions to ensure your content is accessible.",
+    title: "Phụ Đề và Hỗ Trợ Người Khiếm Thính",
+    desc: "Chúng tôi thêm phụ đề để đảm bảo nội dung của bạn dễ tiếp cận với mọi đối tượng.",
     icon: FiType,
   },
   {
-    title: "Whiteboard Animation",
-    desc: "We turn ideas into captivating whiteboard animations.",
+    title: "Livestream/Sự Kiện",
+    desc: "Chúng tôi cung cấp dịch vụ livestream chuyên nghiệp cho các sự kiện, hội nghị, ra mắt sản phẩm với chất lượng cao.",
     icon: FiEdit,
   },
   {
-    title: "DVD and Blu-ray Authoring",
-    desc: "For physical distribution, we ensure professional presentation.",
+    title: "Sản Xuất DVD và Blu-ray",
+    desc: "Đối với phân phối vật lý, chúng tôi đảm bảo trình bày chuyên nghiệp.",
     icon: FiDisc,
   },
   {
-    title: "Archiving and Backup",
-    desc: "Secure storage and retrieval of your valuable content.",
+    title: "Lưu Trữ và Sao Lưu",
+    desc: "Lưu trữ an toàn và truy xuất nội dung giá trị của bạn.",
     icon: FiArchive,
   },
 ];
@@ -69,10 +69,10 @@ export default function PostProductionSection() {
           <div className="relative pb-32">
             {" "}
             {/* padding-bottom for space under content */}
-            <h2 className="text-3xl font-bold mb-2">Post-Production</h2>
+            <h2 className="text-3xl font-bold mb-2">Livestream/sự kiện</h2>
             <p className="text-sm text-gray-300 mb-6">
-              Editing, color grading, and VFX services to bring your vision to
-              life.
+              Dịch vụ biên tập, chỉnh màu và hiệu ứng hình ảnh để hiện thực hóa
+              tầm nhìn của bạn.
             </p>
             {/* Slider positioned at bottom */}
             <div className="absolute bottom-0 left-0 w-full overflow-hidden rounded-xl border border-gray-500/40">

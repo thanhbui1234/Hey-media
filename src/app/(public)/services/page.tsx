@@ -39,15 +39,14 @@ const Services = () => {
       <InfiniteSlider
         images={images}
         direction="left"
-        title="Casting & Talent Management"
+        title="TVC"
         description="Access to professional actors, models, and extras tailored to your production needs."
       />
 
       <InfiniteSlider
         images={images2}
         direction="left"
-        title="Equipment & Crew
-"
+        title="Phim Doanh Nghiệp"
         description="We provide state-of-the-art cameras, lighting, and grip equipment, along with experienced English-speaking crew members. "
       />
 
@@ -55,7 +54,14 @@ const Services = () => {
         speed={0.9}
         images={images}
         direction="left"
-        title="Em yêu aoro li"
+        title="TikTok"
+        description="Access to professional actors, models, and extras tailored to your production needs."
+      />
+      <InfiniteSlider
+        speed={0.9}
+        images={images}
+        direction="left"
+        title="Chụp ảnh"
         description="Access to professional actors, models, and extras tailored to your production needs."
       />
       <PostProductionSection />

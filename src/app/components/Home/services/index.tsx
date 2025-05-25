@@ -17,7 +17,7 @@ const Services = () => {
           text="Khám phá dịch vụ"
         />
         <h3 className=" text-white text-4xl font-bold font-sans">
-          We are video experts in many industries!
+          Chúng tôi là các chuyên gia video trong nhiều ngành công nghiệp!
         </h3>
         <Industries />
       </div>
