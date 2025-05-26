@@ -1,6 +1,5 @@
 "use client";
 
-import SlideFoot from "@/app/components/Layouts/SlideFoot";
 import BannerServices from "@/app/components/Services/BannerServices";
 import ChooseUs from "@/app/components/Services/ChooseUs";
 import PostProductionSection from "@/app/components/Services/postProduction";
@@ -65,7 +64,6 @@ const Services = () => {
         description="Access to professional actors, models, and extras tailored to your production needs."
       />
       <PostProductionSection />
-      <SlideFoot />
     </>
   );
 };
