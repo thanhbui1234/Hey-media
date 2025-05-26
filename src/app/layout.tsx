@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Contact Form Demo",
-  description: "A demo of React Query, Zod, and React Hook Form",
+  title: "Media Studio",
+  description: "Media Studio",
 };
 
 export default function RootLayout({

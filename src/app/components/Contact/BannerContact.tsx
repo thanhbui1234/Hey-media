@@ -55,7 +55,6 @@ const BannerContact = () => {
           content with bold design and smooth animations.
         </motion.p>
       </motion.div>
-
       <ContactForm />
     </div>
   );

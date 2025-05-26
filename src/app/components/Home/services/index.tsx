@@ -12,9 +12,9 @@ const Services = () => {
         <ButtonCustom
           className="cursor-pointer"
           onClick={() => {
-            router.push("/services");
+            router.push("/projects");
           }}
-          text="Khám phá dịch vụ"
+          text="Khám phá dự án"
         />
         <h3 className=" text-white text-4xl font-bold font-sans">
           Chúng tôi là các chuyên gia video trong nhiều ngành công nghiệp!
