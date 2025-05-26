@@ -15,6 +15,7 @@ const TabsWithCards = () => {
       description: "Smartphone cao cấp với chip A17 Pro",
       price: "Ngon",
       image: "vip5.JPG",
+      icon: "💻",
     },
     {
       id: 2,
@@ -22,8 +23,8 @@ const TabsWithCards = () => {
       category: "fashion",
       description: "Giày thể thao phong cách hiện đại",
       price: "Ngon",
-
       image: "motiongraphic.webp",
+      icon: "👗",
     },
     {
       id: 3,
@@ -31,8 +32,8 @@ const TabsWithCards = () => {
       category: "technology",
       description: "Laptop chuyên nghiệp cho designer",
       price: "Ngon",
-
-      image: "33.jpg",
+      image: "33.JPG",
+      icon: "💻",
     },
     {
       id: 4,
@@ -40,8 +41,8 @@ const TabsWithCards = () => {
       category: "food",
       description: "Món mì truyền thống đậm đà",
       price: "Ngon",
-
-      image: "44.jpg",
+      icon: "🍜",
+      image: "44.JPG",
     },
     {
       id: 5,
@@ -49,7 +50,7 @@ const TabsWithCards = () => {
       category: "fashion",
       description: "Đồng hồ sang trọng cao cấp",
       price: "Ngon",
-
+      icon: "💻",
       image: "55.jpg",
     },
     {
@@ -58,7 +59,7 @@ const TabsWithCards = () => {
       category: "technology",
       description: "Bộ máy gaming RGB đầy đủ",
       price: "Ngon",
-
+      icon: "💻",
       image: "vip3.JPG",
     },
     {
@@ -67,7 +68,7 @@ const TabsWithCards = () => {
       category: "food",
       description: "Set sushi cá hồi tươi ngon",
       price: "Ngon",
-
+      icon: "🍜",
       image: "vip5.JPG",
     },
     {
@@ -76,7 +77,7 @@ const TabsWithCards = () => {
       category: "fashion",
       description: "Túi xách designer hàng hiệu",
       price: "Ngon",
-
+      icon: "👗",
       image: "IMG_3706.JPG",
     },
     {
@@ -85,7 +86,7 @@ const TabsWithCards = () => {
       category: "technology",
       description: "Xe điện thông minh tự lái",
       price: "Ngon",
-
+      icon: "💻",
       image: "vip5.JPG",
     },
     {
@@ -94,7 +95,7 @@ const TabsWithCards = () => {
       category: "food",
       description: "Pizza truyền thống từ Italy",
       price: "Ngon",
-
+      icon: "🍜",
       image: "vip1.JPG",
     },
   ];
@@ -203,48 +204,49 @@ const TabsWithCards = () => {
       </div>
 
       <div className=" mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Enhanced Tabs with motion */}
         <div className="flex justify-center mb-12" style={fadeInUpStyle(0.4)}>
-          <div className="relative flex bg-black/30 backdrop-blur-2xl rounded-3xl p-2 border border-white/20 shadow-2xl">
-            {/* Active tab background */}
-            <div
-              className="absolute top-2 bottom-2 bg-gradient-to-r from-white to-gray-200 rounded-2xl transition-all duration-500 ease-out shadow-lg"
-              style={{
-                left: `${
-                  tabs.findIndex((tab) => tab.id === activeTab) *
-                  (100 / tabs.length)
-                }%`,
-                width: `${100 / tabs.length}%`,
-                transform: "translateX(2px) translateY(0px)",
-              }}
-            ></div>
-
-            {tabs.map((tab, index) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`relative z-10 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-3 tab-float ${
-                  activeTab === tab.id
-                    ? "text-black scale-105"
-                    : "text-gray-300 hover:text-white hover:scale-105"
-                }`}
+          <div className="relative w-full md:w-auto overflow-x-auto md:overflow-visible scrollbar-hide md:scrollbar-default">
+            <div className="relative flex bg-black/30 backdrop-blur-2xl rounded-3xl p-2 border border-white/20 shadow-2xl md:min-w-0 min-w-max">
+              {/* Active tab background */}
+              <div
+                className="absolute top-2 bottom-2 bg-gradient-to-r from-white to-gray-200 rounded-2xl transition-all duration-500 ease-out shadow-lg"
                 style={{
-                  animationDelay: `${index * 0.5}s`,
+                  left: `${
+                    tabs.findIndex((tab) => tab.id === activeTab) *
+                    (100 / tabs.length)
+                  }%`,
+                  width: `${100 / tabs.length}%`,
+                  transform: "translateX(2px) translateY(0px)",
                 }}
-              >
-                <span className="text-xl">{tab.icon}</span>
-                <span className="text-sm font-medium">{tab.label}</span>
-                <span
-                  className={`text-xs px-3 py-1 rounded-full font-bold transition-all duration-300 ${
+              ></div>
+
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative z-10 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-3 tab-float whitespace-nowrap ${
                     activeTab === tab.id
-                      ? "bg-black/20 text-black scale-110 bounce-badge"
-                      : "bg-white/10 text-gray-400"
+                      ? "text-black scale-105"
+                      : "text-gray-300 hover:text-white hover:scale-105"
                   }`}
+                  style={{
+                    animationDelay: `${index * 0.5}s`,
+                  }}
                 >
-                  {tab.count}
-                </span>
-              </button>
-            ))}
+                  <span className="text-xl">{tab.icon}</span>
+                  <span className="text-sm font-medium">{tab.label}</span>
+                  <span
+                    className={`text-xs px-3 py-1 rounded-full font-bold transition-all duration-300 ${
+                      activeTab === tab.id
+                        ? "bg-black/20 text-black scale-110 bounce-badge"
+                        : "bg-white/10 text-gray-400"
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -311,6 +313,12 @@ const TabsWithCards = () => {
                       </div>
                     </div>
 
+                    <div className="absolute top-1 left-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                      <div className="bg-gradient-to-r from-white to-gray-300 text-black px-4 py-2 rounded-full text-lg font-bold shadow-lg animate-pulse">
+                        {card.icon}
+                      </div>
+                    </div>
+
                     {/* Price tag */}
                     <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
                       <div className="bg-gradient-to-r from-white to-gray-300 text-black px-4 py-2 rounded-full text-lg font-bold shadow-lg animate-pulse">
@@ -320,19 +328,6 @@ const TabsWithCards = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
-                    {/* Footer */}
-                    <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold  text-gray-200 border border-white/30 group-hover:border-white/50 transition-all duration-300">
-                        {tabs.find((tab) => tab.id === card.category)?.icon}{" "}
-                        {tabs.find((tab) => tab.id === card.category)?.label}
-                      </span>
-
-                      {/* <button className="bg-gradient-to-r from-white to-gray-200 hover:from-gray-200 hover:to-white text-black px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/20 transform hover:-translate-y-1">
-                      Mua ngay
-                    </button> */}
-                    </div>
-                  </div>
 
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/5 via-gray-300/5 to-gray-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
