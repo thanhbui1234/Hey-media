@@ -211,8 +211,8 @@ export default function TabsWithCards() {
       : allCards.filter((card) => card.category === activeTab);
 
   return (
-    <section className="py-16 w-screen">
-      <div className="max-w-full px-6">
+    <section className="py-16 ">
+      <div className=" px-6">
         {/* Tabs */}
         <div className="flex justify-center mb-10 gap-3 flex-wrap">
           {tabs.map((tab) => (

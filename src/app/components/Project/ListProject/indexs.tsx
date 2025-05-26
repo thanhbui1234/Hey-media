@@ -131,20 +131,20 @@ const TabsWithCards = () => {
   const fadeInUpStyle = (delay = 0) => ({
     opacity: 0,
     transform: "translateY(50px)",
-    animation: fadeInUp 1s ease-out ${delay}s forwards,
+    animation: `fadeInUp 1s ease-out ${delay}s forwards`,
   });
 
   const cardAppearStyle = (index: number) => ({
     opacity: 0,
     transform: "translateY(50px) scale(0.9)",
-    animation: cardAppear 0.8s ease-out ${index * 0.1}s forwards,
+    animation: `cardAppear 0.8s ease-out ${index * 0.1}s forwards`,
   });
 
   return (
     <div className="min-h-screen py-12 overflow-hidden">
       {/* CSS Animations */}
       <style>
-        {
+        {`
           @keyframes fadeInUp {
             to {
               opacity: 1;
@@ -187,7 +187,7 @@ const TabsWithCards = () => {
           .bounce-badge {
             animation: bounce 2s infinite;
           }
-        }
+        `}
       </style>
 
       {/* Animated background elements */}
@@ -211,11 +211,11 @@ const TabsWithCards = () => {
               <div
                 className="absolute top-2 bottom-2 bg-gradient-to-r from-white to-gray-200 rounded-2xl transition-all duration-500 ease-out shadow-lg"
                 style={{
-                  left: ${
+                  left: `${
                     tabs.findIndex((tab) => tab.id === activeTab) *
                     (100 / tabs.length)
-                  }%,
-                  width: ${100 / tabs.length}%,
+                  }%`,
+                  width: `${100 / tabs.length}%`,
                   transform: "translateX(2px) translateY(0px)",
                 }}
               ></div>
@@ -224,23 +224,23 @@ const TabsWithCards = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={relative z-10 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-3 tab-float whitespace-nowrap ${
+                  className={`relative z-10 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-3 tab-float whitespace-nowrap ${
                     activeTab === tab.id
                       ? "text-black scale-105"
                       : "text-gray-300 hover:text-white hover:scale-105"
-                  }}
+                  }`}
                   style={{
-                    animationDelay: ${index * 0.5}s,
+                    animationDelay: `${index * 0.5}s`,
                   }}
                 >
                   <span className="text-xl">{tab.icon}</span>
                   <span className="text-sm font-medium">{tab.label}</span>
                   <span
-                    className={text-xs px-3 py-1 rounded-full font-bold transition-all duration-300 ${
+                    className={`text-xs px-3 py-1 rounded-full font-bold transition-all duration-300 ${
                       activeTab === tab.id
                         ? "bg-black/20 text-black scale-110 bounce-badge"
                         : "bg-white/10 text-gray-400"
-                    }}
+                    }`}
                   >
                     {tab.count}
                   </span>
@@ -257,11 +257,11 @@ const TabsWithCards = () => {
         >
           {filteredCards.map((card, index) => (
             <div
-              key={${activeTab}-${card.id}}
+              key={`${activeTab}-${card.id}`}
               className="group relative"
               style={cardAppearStyle(index)}
             >
-              <Link href={/projects/detail}>
+              <Link href="/projects/adeilt">
                 <div className="relative bg-black/40 backdrop-blur-2xl rounded-3xl overflow-hidden border border-white/20 transition-all duration-500 cursor-pointer hover:border-white/40 hover:bg-black/50 group-hover:scale-105 group-hover:-translate-y-4 group-hover:rotate-1 hover:shadow-2xl hover:shadow-white/10">
                   {/* Image container */}
                   <div className="relative overflow-hidden rounded-t-3xl">
