@@ -131,11 +131,10 @@ const Banner = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl md:text-7xl font-bold text-white mb-4">
-              Welcome to <span className="text-[#FF5F38]">FLEX WEDDING</span>
+              Chào mừng tới <span className="text-[#FF5F38]">FLEX WEDDING</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto px-4">
-              Capture your special moments with our professional wedding
-              photography and videography services
+              Bắt sóng thời đại – Dẫn lối truyền thông.
             </p>
           </div>
         </div>

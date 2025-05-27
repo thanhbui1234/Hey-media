@@ -7,40 +7,34 @@ import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 
 const slides = [
   {
-    title: "Recording Facility",
+    title: "Phòng thu hiện đại",
     image: "/vip1.JPG",
-    description:
-      "State-of-the-art recording studios equipped with the latest technology.",
+    description: "Phòng thu hiện đại với công nghệ tiên tiến nhất.",
   },
   {
-    title: "Professional Setup",
+    title: "Thiết lập chuyên nghiệp",
     image: "/vip2.jpg",
-    description:
-      "Expert team and professional equipment for high-quality productions.",
+    description: "Thiết bị chuyên nghiệp, đội ngũ giàu kinh nghiệm.",
   },
   {
-    title: "Premium Backdrops",
+    title: "Phông nền cao cấp",
     image: "/vip3.JPG",
-    description:
-      "Diverse selection of premium backdrops for versatile shooting options.",
+    description: "Phông nền cao cấp, đa dạng cho nhiều phong cách quay.",
   },
   {
-    title: "Sound Design Studio",
+    title: "Phòng âm thanh",
     image: "/vip5.JPG",
-    description:
-      "Professional sound design and mixing facilities for perfect audio.",
+    description: "Phòng âm thanh chuyên nghiệp, chất lượng hoàn hảo.",
   },
   {
-    title: "Color Grading Suite",
+    title: "Phòng chỉnh màu",
     image: "/44.JPG",
-    description:
-      "Advanced color grading equipment for cinematic visual enhancement.",
+    description: "Thiết bị chỉnh màu cao cấp cho hiệu ứng điện ảnh.",
   },
   {
-    title: "VFX Workspace",
+    title: "Khu làm hiệu ứng VFX",
     image: "/55.jpg",
-    description:
-      "Cutting-edge VFX workstations for stunning visual effects creation.",
+    description: "Không gian VFX hiện đại cho hiệu ứng mãn nhãn.",
   },
 ];
 
@@ -58,21 +52,23 @@ const ChooseUs = () => {
     <div className="py-16 px-4 md:px-8 lg:px-16  ">
       <div className="max-w-[1400px] mx-auto border-[0.2px] border-gray-500/20 p-5 rounded-lg px-32">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Why Choose Flex Films?
+          <h2 className="relative z-10 text-lg md:text-5xl my-3 mb-10  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
+            Tại sao chọn chúng tôi?
           </h2>
-          <div className="space-y-2 text-gray-300">
-            <p>
-              Local Expertise - Years of experience working with international
-              clients in Vietnam.
+          <div className="space-y-2 text-gray-300 flex justify-center items-center gap-2 flex-col">
+            <p className="m-w-[500px]">
+              Chúng tôi không chỉ làm media, chúng tôi tạo nên giá trị truyền
+              thông thực sự.
             </p>
-            <p>
-              Cost-Effective Solutions - Competitive pricing without
-              compromising on quality.
+            <p className=" w-[500px]">
+              Với đội ngũ sáng tạo, thiết bị hiện đại và quy trình chuyên
+              nghiệp, chúng tôi cam kết mang đến những sản phẩm ấn tượng, đúng
+              tiến độ và phù hợp với mục tiêu thương hiệu.
             </p>
-            <p>
-              Seamless Execution - Efficient workflows and logistical support
-              for smooth productions.
+            <p className="w-[500px]">
+              Chúng tôi luôn lắng nghe và đồng hành, biến ý tưởng của bạn thành
+              những nội dung truyền cảm hứng, giúp thương hiệu nổi bật và khác
+              biệt trên thị trường.u
             </p>
           </div>
           <ButtonCustom

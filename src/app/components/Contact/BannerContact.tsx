@@ -51,8 +51,8 @@ const BannerContact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
         >
-          We're a creative studio turning your ideas into stunning visual
-          content with bold design and smooth animations.
+          Chúng tôi là một studio sáng tạo biến ý tưởng của bạn thành nội dung
+          trực quan tuyệt đẹp với thiết kế táo bạo và hoạt hình mượt mà.
         </motion.p>
       </motion.div>
       <ContactForm />

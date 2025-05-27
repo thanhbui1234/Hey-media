@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { projectItem } from "@/db/schema";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -14,188 +15,6 @@ const tabs = [
 ];
 
 // Fake 20 media cards
-const allCards = [
-  {
-    id: 1,
-    title: "Dựng video quảng cáo",
-    category: "video",
-    description: "Biên tập video chuyên nghiệp cho chiến dịch marketing",
-    price: "Ngon",
-    image: "vip5.JPG",
-    icon: "🎬",
-  },
-  {
-    id: 2,
-    title: "Thiết kế motion graphic",
-    category: "design",
-    description: "Chuyển động hình ảnh sinh động và sáng tạo",
-    price: "Ngon",
-    image: "motiongraphic.webp",
-    icon: "🎨",
-  },
-  {
-    id: 3,
-    title: "Hậu kỳ phim ngắn",
-    category: "video",
-    description: "Xử lý màu sắc và âm thanh cho dự án phim cá nhân",
-    price: "Ngon",
-    image: "33.JPG",
-    icon: "🎞️",
-  },
-  {
-    id: 4,
-    title: "Chụp ảnh sản phẩm",
-    category: "photo",
-    description: "Ảnh sản phẩm sắc nét, chuyên nghiệp",
-    price: "Ngon",
-    image: "44.JPG",
-    icon: "📸",
-  },
-  {
-    id: 5,
-    title: "Thiết kế poster sự kiện",
-    category: "design",
-    description: "Poster ấn tượng thu hút người tham dự",
-    price: "Ngon",
-    image: "55.jpg",
-    icon: "🖼️",
-  },
-  {
-    id: 6,
-    title: "Livestream đa nền tảng",
-    category: "video",
-    description: "Setup livestream chuyên nghiệp Facebook, YouTube",
-    price: "Ngon",
-    image: "vip3.JPG",
-    icon: "📡",
-  },
-  {
-    id: 7,
-    title: "Dựng intro YouTube",
-    category: "video",
-    description: "Mở đầu video bắt mắt cho kênh cá nhân",
-    price: "Ngon",
-    image: "vip5.JPG",
-    icon: "🎬",
-  },
-  {
-    id: 8,
-    title: "Thiết kế nhận diện thương hiệu",
-    category: "design",
-    description: "Bộ logo, màu sắc, phông chữ đồng bộ",
-    price: "Ngon",
-    image: "IMG_3706.JPG",
-    icon: "📚",
-  },
-  {
-    id: 9,
-    title: "TV Commercial Production",
-    category: "video",
-    description: "Sản xuất quảng cáo truyền hình chuyên nghiệp",
-    price: "Ngon",
-    image: "vip5.JPG",
-    icon: "📺",
-  },
-  {
-    id: 10,
-    title: "Viral video TikTok",
-    category: "video",
-    description: "Nội dung ngắn viral",
-    price: "Ngon",
-    image: "vip1.JPG",
-    icon: "📱",
-  },
-  {
-    id: 11,
-    title: "Chỉnh màu video chuyên nghiệp",
-    category: "video",
-    description: "Color grading điện ảnh",
-    price: "Ngon",
-    image: "vip5.JPG",
-    icon: "🎨",
-  },
-  {
-    id: 12,
-    title: "Storyboard minh họa",
-    category: "design",
-    description: "Vẽ storyboard cho tiền kỳ",
-    price: "Ngon",
-    image: "motiongraphic.webp",
-    icon: "📝",
-  },
-  {
-    id: 13,
-    title: "Mix nhạc nền video",
-    category: "video",
-    description: "Âm nhạc nền phù hợp cho video",
-    price: "Ngon",
-    image: "44.JPG",
-    icon: "🎧",
-  },
-  {
-    id: 14,
-    title: "TVC hoạt hình 2D",
-    category: "video",
-    description: "Quảng cáo hoạt hình sinh động",
-    price: "Ngon",
-    image: "33.JPG",
-    icon: "🖍️",
-  },
-  {
-    id: 15,
-    title: "Chụp ảnh hậu trường",
-    category: "photo",
-    description: "Ảnh behind the scenes cho sự kiện",
-    price: "Ngon",
-    image: "IMG_3706.JPG",
-    icon: "📷",
-  },
-  {
-    id: 16,
-    title: "Sản xuất phỏng vấn",
-    category: "video",
-    description: "Phỏng vấn doanh nhân, nghệ sĩ",
-    price: "Ngon",
-    image: "vip1.JPG",
-    icon: "🎤",
-  },
-  {
-    id: 17,
-    title: "Viết kịch bản video",
-    category: "video",
-    description: "Biên kịch nội dung video giới thiệu",
-    price: "Ngon",
-    image: "vip3.JPG",
-    icon: "✍️",
-  },
-  {
-    id: 18,
-    title: "Làm sub & dịch video",
-    category: "video",
-    description: "Phụ đề tiếng Việt/Anh",
-    price: "Ngon",
-    image: "vip5.JPG",
-    icon: "🌐",
-  },
-  {
-    id: 19,
-    title: "Thiết kế banner chạy ads",
-    category: "design",
-    description: "Banner chạy quảng cáo chuyên nghiệp",
-    price: "Ngon",
-    image: "motiongraphic.webp",
-    icon: "📣",
-  },
-  {
-    id: 20,
-    title: "Dựng vlog du lịch",
-    category: "video",
-    description: "Hiệu ứng chuyển cảnh mượt mà",
-    price: "Ngon",
-    image: "vip5.JPG",
-    icon: "🌍",
-  },
-];
 
 export default function TabsWithCards() {
   const [activeTab, setActiveTab] = useState("all");
@@ -207,8 +26,8 @@ export default function TabsWithCards() {
 
   const filteredCards =
     activeTab === "all"
-      ? allCards
-      : allCards.filter((card) => card.category === activeTab);
+      ? projectItem
+      : projectItem.filter((card) => card.category === activeTab);
 
   return (
     <section className="py-16 ">
@@ -246,7 +65,7 @@ export default function TabsWithCards() {
                 animationFillMode: "both",
               }}
             >
-              <Link href={`/projects/detail`}>
+              <Link href={`/projects/${card.id}`}>
                 <div className="relative bg-black/20 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 cursor-pointer hover:border-white/20 hover:bg-black/30 group-hover:scale-[1.02] group-hover:-translate-y-2 hover:shadow-xl hover:shadow-white/5">
                   <div className="relative overflow-hidden rounded-t-2xl">
                     <img

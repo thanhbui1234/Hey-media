@@ -8,8 +8,14 @@ const nextConfig = {
         port: '',
         pathname: '/t/p/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        port: '',
+        pathname: '/vi/**',
+      },
     ],
   },
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;

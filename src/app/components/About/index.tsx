@@ -32,11 +32,15 @@ const BannerAbout = () => {
       <div className="relative h-full flex items-end pb-24 px-8 md:px-16 lg:px-24">
         <motion.div className="text-left max-w-2xl" style={{ y: textY }}>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            About Us
+            Về chúng tôi
           </h1>
           <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-            Join us on a journey where ideas transform into captivating video
-            content, with a dash of creativity and a whole lot of fun.
+            Chúng tôi là đội ngũ trẻ trung, sáng tạo và đam mê trong lĩnh vực
+            truyền thông – media. Với sứ mệnh kết nối thương hiệu với khách hàng
+            bằng hình ảnh và cảm xúc, chúng tôi luôn đặt chất lượng và sự khác
+            biệt lên hàng đầu. Từ ý tưởng đến sản phẩm hoàn thiện, chúng tôi
+            đồng hành cùng bạn qua từng khung hình, từng câu chuyện – để mỗi nội
+            dung đều có giá trị, mỗi hình ảnh đều có sức sống.
           </p>
         </motion.div>
       </div>

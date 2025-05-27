@@ -30,6 +30,18 @@ const teamMembers = [
     image: "/vip5.JPG",
     facebook: "https://facebook.com/kien",
   },
+  {
+    name: "Kiên Nguyễn",
+    role: "Partner & Executive Producer",
+    image: "/vip5.JPG",
+    facebook: "https://facebook.com/kien",
+  },
+  {
+    name: "Kiên Nguyễn",
+    role: "Partner & Executive Producer",
+    image: "/vip5.JPG",
+    facebook: "https://facebook.com/kien",
+  },
 ];
 
 const cardVariants = {

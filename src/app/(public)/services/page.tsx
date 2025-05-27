@@ -39,14 +39,14 @@ const Services = () => {
         images={images}
         direction="left"
         title="TVC"
-        description="Access to professional actors, models, and extras tailored to your production needs."
+        description="Diễn viên, người mẫu, và nhân sự theo yêu cầu sản xuất."
       />
 
       <InfiniteSlider
         images={images2}
         direction="left"
         title="Phim Doanh Nghiệp"
-        description="We provide state-of-the-art cameras, lighting, and grip equipment, along with experienced English-speaking crew members. "
+        description="Giới thiệu doanh nghiệp chuyên nghiệp và ấn tượng."
       />
 
       <InfiniteSlider
@@ -54,14 +54,14 @@ const Services = () => {
         images={images}
         direction="left"
         title="TikTok"
-        description="Access to professional actors, models, and extras tailored to your production needs."
+        description="Sản xuất nội dung sáng tạo, thu hút người xem nhanh."
       />
       <InfiniteSlider
         speed={0.9}
         images={images}
         direction="left"
         title="Chụp ảnh"
-        description="Access to professional actors, models, and extras tailored to your production needs."
+        description="Dịch vụ chụp ảnh chuyên nghiệp, đa dạng phong cách."
       />
       <PostProductionSection />
     </>

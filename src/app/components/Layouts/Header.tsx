@@ -6,10 +6,10 @@ import { FaFilm } from "react-icons/fa";
 import { IoClose, IoMenu } from "react-icons/io5";
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
-  { name: "Services", href: "/services" },
-  { name: "About", href: "/about" },
+  { name: "Trang chủ", href: "/" },
+  { name: "Dự án", href: "/projects" },
+  { name: "Dịch vụ", href: "/services" },
+  { name: "Về chúng tôi", href: "/about" },
 ];
 
 const Header = () => {
@@ -85,7 +85,7 @@ const Header = () => {
           tabIndex={0}
           aria-label="Let's Talk"
         >
-          Let's Talk
+          Kết nối
         </Link>
 
         {/* Mobile Menu Button */}
