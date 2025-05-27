@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation";
 
 const navigation = [
   { name: "Dashboard", href: "/admin" },
-  { name: "Movies", href: "/admin/movies" },
-  { name: "Users", href: "/admin/users" },
-  { name: "Settings", href: "/admin/settings" },
+  { name: "Projects", href: "/admin/projects" },
+  { name: "Services", href: "/admin/services" },
+  { name: "About", href: "/admin/about" },
+  { name: "Email", href: "/admin/email" },
 ];
 
 export default function AdminLayout({
@@ -23,7 +24,7 @@ export default function AdminLayout({
       <div className="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-center h-16 px-4 bg-gray-900">
-            <h1 className="text-xl font-bold text-white">Admin Panel</h1>
+            <h1 className="text-xl font-bold text-white">Admin Dashboard</h1>
           </div>
           <nav className="flex-1 px-4 py-4 space-y-1">
             {navigation.map((item) => {
