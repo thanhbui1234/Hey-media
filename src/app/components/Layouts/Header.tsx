@@ -1,17 +1,20 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaFilm } from "react-icons/fa";
 import { IoClose, IoMenu } from "react-icons/io5";
 
 const navLinks = [
-  { name: "Home", href: "/", active: true },
-  { name: "Projects", href: "/projects", active: false },
-  { name: "Services", href: "/services", active: false },
-  { name: "About", href: "/about", active: false },
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "Services", href: "/services" },
+  { name: "About", href: "/about" },
 ];
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleToggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -21,6 +24,11 @@ const Header = () => {
     if (e.key === "Enter" || e.key === " ") {
       handleToggleMobileMenu();
     }
+  };
+
+  // Function to check if a link is active
+  const isActiveLink = (href: string) => {
+    return pathname === href;
   };
 
   return (
@@ -42,31 +50,38 @@ const Header = () => {
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex gap-8 items-center">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <Link
-                href={link.href}
-                className={`relative px-1 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-                  link.active
-                    ? "text-orange-400"
-                    : "text-white hover:text-orange-300"
-                }`}
-                tabIndex={0}
-                aria-label={link.name}
-              >
-                {link.name}
-                {link.active && (
-                  <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-orange-400 rounded-full" />
-                )}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = isActiveLink(link.href);
+            return (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  className={`relative px-1 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 ${
+                    isActive
+                      ? "text-orange-400"
+                      : "text-white hover:text-orange-300"
+                  }`}
+                  tabIndex={0}
+                  aria-label={link.name}
+                >
+                  {link.name}
+                  {isActive && (
+                    <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-orange-400 rounded-full" />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Desktop Let's Talk Button */}
         <Link
           href="/contact"
-          className="hidden md:block bg-white text-black font-semibold px-6 py-2 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors hover:bg-orange-100"
+          className={`hidden md:block font-semibold px-6 py-2 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors ${
+            isActiveLink("/contact")
+              ? "bg-orange-500 text-white"
+              : "bg-white text-black hover:bg-orange-100"
+          }`}
           tabIndex={0}
           aria-label="Let's Talk"
         >
@@ -103,30 +118,37 @@ const Header = () => {
           }`}
         >
           <ul className="flex flex-col">
-            {navLinks.map((link) => (
-              <li
-                key={link.name}
-                className="border-b border-gray-100 last:border-b-0"
-              >
-                <Link
-                  href={link.href}
-                  className={`block px-6 py-4 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-                    link.active
-                      ? "text-orange-400 bg-orange-50"
-                      : "text-gray-800 hover:bg-gray-50"
-                  }`}
-                  onClick={handleToggleMobileMenu}
-                  tabIndex={0}
-                  aria-label={link.name}
+            {navLinks.map((link) => {
+              const isActive = isActiveLink(link.href);
+              return (
+                <li
+                  key={link.name}
+                  className="border-b border-gray-100 last:border-b-0"
                 >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    href={link.href}
+                    className={`block px-6 py-4 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 ${
+                      isActive
+                        ? "text-orange-400 bg-orange-50"
+                        : "text-gray-800 hover:bg-gray-50"
+                    }`}
+                    onClick={handleToggleMobileMenu}
+                    tabIndex={0}
+                    aria-label={link.name}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              );
+            })}
             <li className="p-4">
               <Link
-                href="contact"
-                className="block w-full bg-orange-500 text-white font-semibold px-6 py-3 rounded-full text-center shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors hover:bg-orange-600"
+                href="/contact"
+                className={`block w-full font-semibold px-6 py-3 rounded-full text-center shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors ${
+                  isActiveLink("/contact")
+                    ? "bg-orange-600 text-white"
+                    : "bg-orange-500 text-white hover:bg-orange-600"
+                }`}
                 onClick={handleToggleMobileMenu}
                 tabIndex={0}
                 aria-label="Let's Talk"

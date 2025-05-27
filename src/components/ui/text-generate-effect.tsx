@@ -51,18 +51,18 @@ export const TextGenerateEffect = ({
   };
 
   return (
-    <div className={cn("font-bold", className)}>
-      <div className="mt-4">
-        <p
+    <span className={cn("font-bold", className)}>
+      <span className="mt-4">
+        <span
           className=" text-white/65 text-2xl  font-roboto mx-10 max-w-2xl leading-loose   tracking-wide"
           style={{
             fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
           }}
         >
           {renderWords()}
-        </p>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   );
 };
 
