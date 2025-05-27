@@ -61,8 +61,8 @@ const Footer = () => {
         <p className="text-white/70 mb-4 text-lg">
           Not limited to video, we’re your creative comrades.
         </p>
-        <Link href="#contact">
-          <ButtonCustom text="Let's Collaborate" />
+        <Link href="/contact">
+          <ButtonCustom className="cursor-pointer" text="Let's Collaborate" />
         </Link>
       </motion.div>
 

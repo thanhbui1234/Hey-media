@@ -64,7 +64,7 @@ const BannerSlideFoot = () => {
           transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
         >
           <Image
-            src="/IMG_3706.JPG/"
+            src="/IMG_3706.JPG////"
             alt="Banner Background"
             fill
             className="object-cover object-center"
