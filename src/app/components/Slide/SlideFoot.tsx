@@ -1,7 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const slides = [
@@ -58,19 +57,6 @@ const BannerSlideFoot = () => {
     <>
       <section className="relative w-full min-h-[80vh] mt-10 flex items-center justify-center overflow-hidden">
         {/* Background Image with Parallax Effect */}
-        <motion.div
-          className="absolute inset-0 z-0"
-          animate={{ scale: 1.05 }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-        >
-          <Image
-            src="/IMG_3706.JPG////"
-            alt="Banner Background"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </motion.div>
 
         {/* Dynamic Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60 z-10" />
