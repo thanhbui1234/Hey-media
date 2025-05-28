@@ -21,25 +21,25 @@ const teamMembers = [
   {
     name: "Thái Hà",
     role: "Partner & Executive Producer",
-    image: "/vip3.JPG",
+    image: "/vip3.webp",
     facebook: "https://facebook.com/ha",
   },
   {
     name: "Kiên Nguyễn",
     role: "Partner & Executive Producer",
-    image: "/vip5.JPG",
+    image: "/vip5.webp",
     facebook: "https://facebook.com/kien",
   },
   {
     name: "Kiên Nguyễn",
     role: "Partner & Executive Producer",
-    image: "/vip5.JPG",
+    image: "/vip5.webp",
     facebook: "https://facebook.com/kien",
   },
   {
     name: "Kiên Nguyễn",
     role: "Partner & Executive Producer",
-    image: "/vip5.JPG",
+    image: "/vip5.webp",
     facebook: "https://facebook.com/kien",
   },
 ];

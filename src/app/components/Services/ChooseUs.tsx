@@ -18,12 +18,12 @@ const slides = [
   },
   {
     title: "Phông nền cao cấp",
-    image: "/vip3.JPG",
+    image: "/vip3.webp",
     description: "Phông nền cao cấp, đa dạng cho nhiều phong cách quay.",
   },
   {
     title: "Phòng âm thanh",
-    image: "/vip5.JPG",
+    image: "/vip5.webp",
     description: "Phòng âm thanh chuyên nghiệp, chất lượng hoàn hảo.",
   },
   {

@@ -213,13 +213,13 @@ const industries = [
     id: 3,
     title: "Lifestyle",
     description: "Documenting life's beautiful moments and stories",
-    image: "vip3.JPG",
+    image: "vip3.webp",
   },
   {
     id: 4,
     title: "VIP Events",
     description: "Exclusive coverage for special occasions and events",
-    image: "vip5.JPG",
+    image: "vip5.webp",
   },
   {
     id: 5,

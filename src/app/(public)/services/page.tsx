@@ -8,12 +8,12 @@ import { useRouter } from "next/navigation";
 const images = [
   "/vip1.JPG",
   "/vip2.JPG",
-  "/vip3.JPG",
-  "/vip5.JPG",
+  "/vip3.webp",
+  "/vip5.webp",
   "/vip1.JPG",
   "/vip2.JPG",
-  "/vip3.JPG",
-  "/vip5.JPG",
+  "/vip3.webp",
+  "/vip5.webp",
 ];
 const images2 = [
   "/vfx.webp",

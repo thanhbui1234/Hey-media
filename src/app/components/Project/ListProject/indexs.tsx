@@ -14,7 +14,7 @@ const TabsWithCards = () => {
       category: "technology",
       description: "Smartphone cao cấp với chip A17 Pro",
       price: "Ngon",
-      image: "vip5.JPG",
+      image: "vip5.webp",
       icon: "💻",
     },
     {
@@ -60,7 +60,7 @@ const TabsWithCards = () => {
       description: "Bộ máy gaming RGB đầy đủ",
       price: "Ngon",
       icon: "💻",
-      image: "vip3.JPG",
+      image: "vip3.webp",
     },
     {
       id: 7,
@@ -69,7 +69,7 @@ const TabsWithCards = () => {
       description: "Set sushi cá hồi tươi ngon",
       price: "Ngon",
       icon: "🍜",
-      image: "vip5.JPG",
+      image: "vip5.webp",
     },
     {
       id: 8,
@@ -87,7 +87,7 @@ const TabsWithCards = () => {
       description: "Xe điện thông minh tự lái",
       price: "Ngon",
       icon: "💻",
-      image: "vip5.JPG",
+      image: "vip5.webp",
     },
     {
       id: 10,

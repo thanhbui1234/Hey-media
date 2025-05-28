@@ -16,19 +16,19 @@ const cardData = [
     youtubeId: "26ozVYUZMcY",
   },
   {
-    img: "/vip3.JPG",
+    img: "/vip3.webp",
     title: "TikTok",
     subtitle: "ARTIST 3",
     youtubeId: "mngtcfcaVrI",
   },
   {
-    img: "/vip5.JPG",
+    img: "/vip5.webp",
     title: "Chụp ảnh",
     subtitle: "ARTIST 4",
     youtubeId: "VR8ooa3G_5M",
   },
   {
-    img: "/vip5.JPG",
+    img: "/vip5.webp",
     title: "Livestream/sự kiện",
     subtitle: "ARTIST 5",
     youtubeId: "VR8ooa3G_5M",

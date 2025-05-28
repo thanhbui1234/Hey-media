@@ -53,7 +53,7 @@ const services = [
   },
 ];
 
-const images = ["/vip1.JPG", "/vip2.JPG", "/vip3.JPG", "/vip5.JPG"];
+const images = ["/vip1.JPG", "/vip2.JPG", "/vip3.webp", "/vip5.webp"];
 const duplicatedImages = [...images, ...images];
 
 export default function PostProductionSection() {
