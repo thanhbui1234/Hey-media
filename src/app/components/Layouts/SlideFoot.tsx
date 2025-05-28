@@ -20,7 +20,7 @@ const SlideFoot = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <div className="relative w-full overflow-hidden  py-48 mt-10 ">
+    <div className="relative w-full overflow-hidden  py-32 mt-10 ">
       <motion.div
         className="flex items-center gap-x-4"
         animate={{ x: [0, -slides.length * 320] }}
@@ -62,14 +62,14 @@ const SlideFoot = () => {
                       : { opacity: 0, scale: 0.95 }
                   }
                   transition={{ duration: 0.35, type: "spring" }}
-                  className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full z-20 pointer-events-none w-[280px] h-[160px] flex items-center justify-center overflow-hidden rounded-xl"
+                  className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full z-50 pointer-events-none w-[200px] h-[100px] flex items-center justify-center overflow-hidden rounded-xl"
                 >
                   <Image
                     src={slide.img}
                     alt={slide.label}
                     width={280}
                     height={160}
-                    className="object-cover w-full h-full shadow-2xl border-2 border-white select-none"
+                    className="object-cover w-full h-full shadow-2xl border-1 rounded border-white select-none"
                     priority={false}
                   />
                 </motion.div>
