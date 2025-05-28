@@ -162,6 +162,9 @@
   border: none !important;
   box-shadow: none !important;
 }
+.place-card-large{
+  display: none !important;
+}
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #888 !important;
