@@ -103,7 +103,7 @@ export default function ProjectDetail({
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-center gap-12 py-24 px-4 max-w-6xl mx-auto relative z-10"
+        className="flex flex-col items-center gap-12 py-24 px-4  mx-auto relative z-10"
       >
         {/* Project Title */}
         <motion.div variants={itemVariants} className="text-center">
@@ -270,14 +270,17 @@ export default function ProjectDetail({
         </motion.div>
 
         {/* Similar Projects Section */}
-        <motion.div variants={itemVariants} className="w-full max-w-6xl mt-12">
-          <motion.div className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10">
+        <motion.div
+          variants={itemVariants}
+          className="w-full max-w-[2500px] mt-12"
+        >
+          <motion.div className=" rounded-3xl p-8 border border-white/10">
             <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
               <div className="w-1 h-8 bg-gradient-to-b from-pink-400 to-purple-400 rounded-full"></div>
               Similar Projects
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {projectItem
                 .filter((item) => item.id !== project.id)
                 .slice(0, 6)
