@@ -190,6 +190,10 @@ html {
   scroll-behavior: smooth;
 }
 
+*:focus {
+  outline: none !important;
+}
+
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -202,4 +206,10 @@ html {
 .animate-shimmer {
   animation: shimmer 2s infinite;
   background-size: 200% 100%;
+}
+
+a:focus,
+a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }

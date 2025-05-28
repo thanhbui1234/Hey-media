@@ -56,11 +56,10 @@ const Header = () => {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className={`relative px-1 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-                    isActive
-                      ? "text-orange-400"
-                      : "text-white hover:text-orange-300"
-                  }`}
+                  className={`relative px-1 text-base font-medium transition-colors
+    outline-none focus:outline-none focus-visible:outline-none 
+    focus:ring-2 focus:ring-orange-500
+    ${isActive ? "text-orange-400" : "text-white hover:text-orange-300"}`}
                   tabIndex={0}
                   aria-label={link.name}
                 >
@@ -127,9 +126,9 @@ const Header = () => {
                 >
                   <Link
                     href={link.href}
-                    className={`block px-6 py-4 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 ${
+                    className={`block px-6 py-4 text-base font-medium transition-colors focus:outline-none focus:ring-2 ${
                       isActive
-                        ? "text-orange-400 bg-orange-50"
+                        ? "text-orange-400 "
                         : "text-gray-800 hover:bg-gray-50"
                     }`}
                     onClick={handleToggleMobileMenu}

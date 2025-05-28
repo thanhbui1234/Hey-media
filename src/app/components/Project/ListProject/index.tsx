@@ -57,10 +57,7 @@ export default function TabsWithCards() {
           style={{ opacity: showCards ? 1 : 0 }}
         >
           {filteredCards.map((card, index) => (
-            <LinkPreview
-              className="w-full"
-              url={`https://www.youtube.com/watch?v=${card.linkYtb}`}
-            >
+            <LinkPreview className="w-full" url={card.linkYtb}>
               <div
                 key={card.id}
                 className="group relative"

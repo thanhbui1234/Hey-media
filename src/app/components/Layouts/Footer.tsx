@@ -118,7 +118,7 @@ const Footer = () => {
         <motion.div variants={itemVariants}>
           <h4 className="text-white font-semibold mb-4">Newsletter</h4>
           <p className="text-white/60 mb-4">Get updates & offers</p>
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 mt-3">
             <input
               type="email"
               placeholder="you@example.com"
