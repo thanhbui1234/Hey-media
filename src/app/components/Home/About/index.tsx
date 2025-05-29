@@ -1,25 +1,47 @@
 "use client";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const TextGenerateEffect = ({
+  words,
+  className,
+}: {
+  words: string;
+  className: string;
+}) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < words.length) {
+      const timer = setTimeout(() => {
+        setDisplayedText((prev) => prev + words[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
+      }, 30);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, words]);
+
+  return <div className={className}>{displayedText}</div>;
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
+      staggerChildren: 0.4,
+      delayChildren: 0.3,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 1,
       ease: "easeOut",
     },
   },
@@ -28,7 +50,7 @@ const itemVariants = {
 export default function AboutCompany() {
   return (
     <>
-      <section className="w-full min-h-screen relative overflow-hidden flex items-center justify-center">
+      <section className="w-full min-h-screen relative overflow-hidden">
         {/* Video Background */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
@@ -41,127 +63,120 @@ export default function AboutCompany() {
           Your browser does not support the video tag.
         </video>
 
-        {/* Enhanced Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70 z-5"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 z-5"></div>
+        {/* Subtle Dark Overlay - Only at edges */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 z-1"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 z-1"></div>
 
-        {/* Floating Elements */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl z-5"
-        />
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            opacity: [0.1, 0.25, 0.1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3,
-          }}
-          className="absolute bottom-32 right-16 w-48 h-48 bg-purple-500/20 rounded-full blur-2xl z-5"
-        />
+        {/* Cinematic Light Streaks */}
+        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent z-2"></div>
+        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent z-2"></div>
 
-        {/* Content */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="relative z-10 w-full max-w-6xl mx-auto px-6 py-10 md:py-20"
-        >
-          {/* Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <motion.h1
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-purple-100 mb-6 leading-tight"
-            >
-              Về Chúng Tôi
-            </motion.h1>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "6rem" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"
-            />
-          </motion.div>
+        {/* Main Content */}
+        <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-6">
+          <div className="w-full max-w-7xl mx-auto">
+            {/* Title Section */}
+            <div className="text-center mb-20">
+              <h1 className="text-6xl md:text-8xl font-extralight tracking-widest text-white mb-8 drop-shadow-2xl">
+                VỀ CHÚNG TÔI
+              </h1>
+              <div className="w-32 h-px bg-white/60 mx-auto"></div>
+            </div>
 
-          {/* Content Grid */}
-          <div className="grid grid-cols-1  gap-8 md:gap-12">
-            {/* Main Description */}
-            <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover={{ scale: 1.02, rotateY: 2 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 shadow-2xl"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-2 h-8 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full"></div>
-                  <h2 className="text-xl md:text-2xl font-semibold text-white/90">
+            {/* Content Grid - Two Columns */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+              {/* Left Column - Bắt đầu */}
+              <div className="space-y-8">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-px bg-gradient-to-r from-white to-transparent"></div>
+                  <h2 className="text-2xl md:text-3xl font-light tracking-wider text-white/95 uppercase">
                     Bắt đầu
                   </h2>
                 </div>
-                <TextGenerateEffect
-                  words="Mọi ý tưởng lớn đều bắt đầu từ những điều nhỏ nhất. Một chiếc máy quay cầm tay, vài dòng kịch bản nguệch ngoạc và một niềm tin: nội dung chân thật sẽ chạm đến trái tim người xem. Chúng tôi không học làm phim chuyên nghiệp, nhưng chúng tôi biết cách lắng nghe, kể lại và làm cho câu chuyện trở nên sống động. Mỗi dự án, mỗi khung hình đều là một hành trình – không chỉ của nhân vật, mà còn là hành trình trưởng thành của chính chúng tôi."
-                  className="text-lg md:text-xl text-white/90 leading-relaxed"
-                />
-              </motion.div>
-            </motion.div>
 
-            {/* Secondary Description */}
-            <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover={{ scale: 1.02, rotateY: -2 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-all duration-500 shadow-2xl"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-2 h-8 bg-gradient-to-b from-purple-400 to-pink-400 rounded-full"></div>
-                  <h2 className="text-xl md:text-2xl font-semibold text-white/90">
+                <div className="space-y-6">
+                  <TextGenerateEffect
+                    words="Mọi ý tưởng lớn đều bắt đầu từ những điều nhỏ nhất."
+                    className="text-xl md:text-2xl font-light text-white/90 leading-relaxed drop-shadow-lg"
+                  />
+
+                  <div className="w-8 h-px bg-white/40 my-6"></div>
+
+                  <TextGenerateEffect
+                    words="Một chiếc máy quay cầm tay, vài dòng kịch bản nguệch ngoạc và một niềm tin: nội dung chân thật sẽ chạm đến trái tim người xem. Chúng tôi không học làm phim chuyên nghiệp, nhưng chúng tôi biết cách lắng nghe, kể lại và làm cho câu chuyện trở nên sống động."
+                    className="text-lg md:text-xl font-light text-white/85 leading-relaxed drop-shadow-lg"
+                  />
+
+                  <TextGenerateEffect
+                    words="Mỗi dự án, mỗi khung hình đều là một hành trình – không chỉ của nhân vật, mà còn là hành trình trưởng thành của chính chúng tôi."
+                    className="text-lg md:text-xl font-light text-white/80 leading-relaxed drop-shadow-lg italic"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column - Tầm nhìn */}
+              <div className="space-y-8 lg:mt-32">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-px bg-gradient-to-r from-white to-transparent"></div>
+                  <h2 className="text-2xl md:text-3xl font-light tracking-wider text-white/95 uppercase">
                     Tầm nhìn
                   </h2>
                 </div>
-                <TextGenerateEffect
-                  words="Trở thành đơn vị tiên phong trong việc kể chuyện bằng hình ảnh, nơi mà mỗi thước phim, mỗi khung hình đều mang giá trị kết nối con người với cảm xúc thật.
-Chúng tôi hướng đến việc xây dựng một hệ sinh thái sáng tạo bền vững – nơi những người trẻ có thể tự do thể hiện góc nhìn riêng, và cùng nhau tạo ra những sản phẩm mang dấu ấn Việt Nam ra thế giới.
-Tầm nhìn của chúng tôi không chỉ nằm ở chất lượng hình ảnh, mà còn ở chiều sâu nội dung – vì chúng tôi tin rằng, nội dung tốt có thể thay đổi cách người ta nhìn nhận về thế giới."
-                  className="text-lg md:text-xl text-white/90 leading-relaxed"
-                />
-              </motion.div>
-            </motion.div>
+
+                <div className="space-y-6">
+                  <TextGenerateEffect
+                    words="Trở thành đơn vị tiên phong trong việc kể chuyện bằng hình ảnh, nơi mà mỗi thước phim, mỗi khung hình đều mang giá trị kết nối con người với cảm xúc thật."
+                    className="text-lg md:text-xl font-light text-white/90 leading-relaxed drop-shadow-lg"
+                  />
+
+                  <div className="w-8 h-px bg-white/40 my-6"></div>
+
+                  <TextGenerateEffect
+                    words="Chúng tôi hướng đến việc xây dựng một hệ sinh thái sáng tạo bền vững – nơi những người trẻ có thể tự do thể hiện góc nhìn riêng, và cùng nhau tạo ra những sản phẩm mang dấu ấn Việt Nam ra thế giới."
+                    className="text-lg md:text-xl font-light text-white/85 leading-relaxed drop-shadow-lg"
+                  />
+
+                  <TextGenerateEffect
+                    words="Tầm nhìn của chúng tôi không chỉ nằm ở chất lượng hình ảnh, mà còn ở chiều sâu nội dung – vì chúng tôi tin rằng, nội dung tốt có thể thay đổi cách người ta nhìn nhận về thế giới."
+                    className="text-lg md:text-xl font-light text-white/80 leading-relaxed drop-shadow-lg italic"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Quote */}
+            <div className="text-center mt-32 mb-16">
+              <div className="max-w-4xl mx-auto">
+                <div className="text-4xl md:text-6xl font-extralight text-white/60 mb-8">
+                  "
+                </div>
+                <p className="text-xl md:text-2xl font-light text-white/70 leading-relaxed italic tracking-wide">
+                  Chúng tôi không chỉ làm phim - chúng tôi tạo ra những khoảnh
+                  khắc
+                </p>
+                <div className="w-24 h-px bg-white/40 mx-auto mt-8"></div>
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1 h-3 bg-white/60 rounded-full mt-2"
-            />
-          </motion.div>
-        </motion.div>
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="w-6 h-10 border border-white/30 rounded-full flex justify-center">
+            <div className="w-px h-3 bg-white/50 mt-2 animate-pulse"></div>
+          </div>
+        </div>
+
+        {/* Film Strip Effect - Bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-4 bg-black/80 z-5">
+          <div className="flex h-full">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="flex-1 border-r border-white/20 h-full"
+              ></div>
+            ))}
+          </div>
+        </div>
       </section>
     </>
   );
