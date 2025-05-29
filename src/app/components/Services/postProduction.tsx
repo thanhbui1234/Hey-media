@@ -58,7 +58,7 @@ const duplicatedImages = [...images, ...images];
 
 export default function PostProductionSection() {
   return (
-    <section className="relative text-white py-16 px-6 w-[1400px!important] left-[13%]">
+    <section className="relative text-white py-5 px-2 md:py-16 md:px-6 w-[370px] md:w-[1400px!important] left-[13%]">
       {/* Background stripes */}
       <div className="absolute inset-0 pointer-events-none z-0 bg-black/40 before:absolute before:inset-0 before:bg-[repeating-linear-gradient(to_right,_transparent,_transparent_90px,_rgba(255,255,255,0.05)_91px,_transparent_92px)] rounded-2xl border border-gray-600/30" />
 
