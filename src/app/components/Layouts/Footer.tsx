@@ -115,7 +115,7 @@ const Footer = () => {
         </motion.div>
 
         {/* Newsletter */}
-        <motion.div variants={itemVariants}>
+        {/* <motion.div variants={itemVariants}>
           <h4 className="text-white font-semibold mb-4">Newsletter</h4>
           <p className="text-white/60 mb-4">Get updates & offers</p>
           <div className="flex flex-col sm:flex-row gap-2 mt-3">
@@ -131,7 +131,7 @@ const Footer = () => {
               Subscribe
             </motion.button>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Social Icons */}
         <motion.div variants={itemVariants}>

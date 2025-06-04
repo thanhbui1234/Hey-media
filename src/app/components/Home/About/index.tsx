@@ -75,7 +75,7 @@ export default function AboutCompany() {
         <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-6">
           <div className="w-full max-w-7xl mx-auto">
             {/* Title Section */}
-            <div className="text-center mb-20">
+            <div className="text-center my-10">
               <h1 className="text-6xl md:text-8xl font-extralight tracking-widest text-white mb-8 drop-shadow-2xl">
                 VỀ CHÚNG TÔI
               </h1>
