@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { projectItem } from "@/db/schema";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,13 +16,69 @@ const tabs = [
   { id: "photo", label: "Chụp ảnh" },
 ];
 
-// Fake 20 media cards
+// Image component with loading state
+function ImageWithLoading({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  return (
+    <div className="relative overflow-hidden rounded-t-2xl">
+      {/* Skeleton - only show when image not loaded and no error */}
+      {!imageLoaded && !imageError && (
+        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10">
+          {/* Shimmer effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            animate={{
+              x: ["-100%", "100%"],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </div>
+      )}
+
+      {/* Actual image */}
+      <img
+        src={src}
+        alt={alt}
+        className={cn(className, imageLoaded ? "opacity-100" : "opacity-0")}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageError(true)}
+        loading="lazy"
+        style={{ transition: "opacity 0.3s ease" }}
+      />
+
+      {/* Error fallback */}
+      {imageError && (
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-red-600/20 flex items-center justify-center">
+          <div className="text-white/60 text-center">
+            <div className="text-2xl mb-2">📷</div>
+            <div className="text-sm">Image failed to load</div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function TabsWithCards() {
   const [activeTab, setActiveTab] = useState("all");
   const [showCards, setShowCards] = useState(false);
 
   useEffect(() => {
+    setShowCards(false);
     setTimeout(() => setShowCards(true), 100); // simulate loading
   }, [activeTab]);
 
@@ -31,8 +88,8 @@ export default function TabsWithCards() {
       : projectItem.filter((card) => card.category === activeTab);
 
   return (
-    <section className="py-16 ">
-      <div className=" px-6">
+    <section className="py-16">
+      <div className="px-6">
         {/* Tabs */}
         <div className="flex justify-center mb-10 gap-3 flex-wrap">
           {tabs.map((tab) => (
@@ -57,9 +114,8 @@ export default function TabsWithCards() {
           style={{ opacity: showCards ? 1 : 0 }}
         >
           {filteredCards.map((card, index) => (
-            <LinkPreview className="w-full" url={card.linkYtb}>
+            <LinkPreview key={card.id} className="w-full" url={card.linkYtb}>
               <div
-                key={card.id}
                 className="group relative"
                 style={{
                   animation: "fadeInUp 0.4s ease",
@@ -69,32 +125,34 @@ export default function TabsWithCards() {
               >
                 <Link href={`/projects/${card.id}`}>
                   <div className="relative bg-black/20 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/10 transition-all duration-500 cursor-pointer hover:border-white/20 hover:bg-black/30 group-hover:scale-[1.02] group-hover:-translate-y-2 hover:shadow-xl hover:shadow-white/5">
-                    <div className="relative overflow-hidden rounded-t-2xl">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="w-full max-h-[230px] h-[230px] object-cover transition-all duration-700 group-hover:scale-105 group-hover:rotate-1"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-100">
-                        <div className="flex gap-2">
-                          <button className="bg-black/30 backdrop-blur-md p-2 rounded-full text-white hover:bg-black/50 transition hover:scale-110">
-                            ❤️
-                          </button>
-                          <button className="bg-black/30 backdrop-blur-md p-2 rounded-full text-white hover:bg-black/50 transition hover:scale-110">
-                            👁
-                          </button>
-                        </div>
+                    <ImageWithLoading
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full max-h-[230px] h-[230px] object-cover transition-all duration-700 group-hover:scale-105 group-hover:rotate-1"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-100">
+                      <div className="flex gap-2">
+                        <button className="bg-black/30 backdrop-blur-md p-2 rounded-full text-white hover:bg-black/50 transition hover:scale-110">
+                          ❤️
+                        </button>
+                        <button className="bg-black/30 backdrop-blur-md p-2 rounded-full text-white hover:bg-black/50 transition hover:scale-110">
+                          👁
+                        </button>
                       </div>
-                      <div className="absolute top-2 left-4 opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-200">
-                        <div className="bg-white/70 text-black px-3 py-1 rounded-full text-sm font-medium shadow">
-                          {card.category}
-                        </div>
+                    </div>
+
+                    <div className="absolute top-2 left-4 opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-200">
+                      <div className="bg-white/70 text-black px-3 py-1 rounded-full text-sm font-medium shadow">
+                        {card.category}
                       </div>
-                      <div className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-300">
-                        <div className="text-white text-lg font-semibold drop-shadow">
-                          {card.title}
-                        </div>
+                    </div>
+
+                    <div className="absolute bottom-2 left-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-300">
+                      <div className="text-white text-lg font-semibold drop-shadow">
+                        {card.title}
                       </div>
                     </div>
                   </div>
