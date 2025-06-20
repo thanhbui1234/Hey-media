@@ -49,7 +49,7 @@ const Footer = () => {
         >
           <FaFilm className="text-4xl text-[#FF5F38]" />
           <h2 className="text-3xl md:text-4xl font-bold tracking-widest relative overflow-hidden">
-            FLEX FILMS
+            96pictures
             {/* Shine effect */}
             <motion.div
               className="absolute top-0 left-[-50%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-25deg]"
@@ -76,18 +76,16 @@ const Footer = () => {
       >
         {/* Contact */}
         <motion.div variants={itemVariants}>
-          <h4 className="text-white font-semibold mb-4">Contact</h4>
+          <h4 className="text-white font-semibold mb-4">Liên hệ </h4>
           <p className="text-white/60 leading-6">
-            11-K1 Street No. 40,
+            86 Đại An 
             <br />
-            Tan Phong, District 7,
-            <br />
-            Ho Chi Minh City
+            Văn Quán, Hà Đông, Hà Nội
             <br />
             <br />
-            contact@flexfilms.vn
+            hey.productionsvn@gmail.com 
             <br />
-            037 837 8000
+            0966787864
           </p>
         </motion.div>
 
@@ -135,7 +133,7 @@ const Footer = () => {
 
         {/* Social Icons */}
         <motion.div variants={itemVariants}>
-          <h4 className="text-white font-semibold mb-4">Social</h4>
+          <h4 className="text-white font-semibold mb-4">Liên kết</h4>
           <div className="flex gap-4">
             {[FaFacebookF, FaInstagram, FaVimeoV, FaLinkedinIn].map(
               (Icon, idx) => (
@@ -157,7 +155,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="text-center text-white/30 text-xs mt-12">
-        © {new Date().getFullYear()} FLEX FILMS. All rights reserved.
+        © {new Date().getFullYear()} 96pictures. All rights reserved.
       </div>
     </motion.footer>
   );

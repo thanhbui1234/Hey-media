@@ -1,45 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaFacebookF, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
-import {
-  SiAmazon,
-  SiMastercard,
-  SiPaypal,
-  SiPorsche,
-  SiSamsung,
-  SiVisa,
-} from "react-icons/si";
+import Image from "next/image";
 
-// Danh sách icon giả lập
-const ICONS = [
-  SiSamsung,
-  SiPorsche,
-  SiVisa,
-  SiMastercard,
-  SiPaypal,
-  SiAmazon,
-  FaGoogle,
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  SiSamsung,
-  SiPaypal,
-  SiVisa,
-  FaInstagram,
-  FaGoogle,
+// Danh sách logo khách hàng
+const CUSTOMER_LOGOS = [
+  { src: "/customer/vinpearl-logo-inkythuatso-1-13-10-21-19.png" },
+  { src: "/customer/logo-vinfast-inkythuatso-21-11-08-55.png" },
+  { src: "/customer/FPT_logo_2010.svg.png" },
+  { src: "/customer/logo-vietcombank (1).png", noFilter: true },
+  { src: "/customer/1349_Logo_mYi_cho_khYi_YYu_mYi.png" },
+  { src: "/customer/Logo_MB_new.png" },
+  { src: "/customer/Bamboo_Airways_Logo.svg.png" },
+  { src: "/customer/Logo-Vinhomes.png" },
+  { src: "/customer/VPBank_logo.svg.png" },
+  { src: "/customer/Logo-Cong-ty-CP-Tap-doan-Ecopark.webp" },
+  { src: "/customer/Logo_TPBank.svg.png" },
+  { src: "/customer/Mercedes-Logo.svg.png" },
+  { src: "/customer/Vietnam_Airlines_logo.svg.png" },
+  { src: "/customer/4f9f272fee9bc5f0a287a7477985f8ad.png" },
 ];
 
-const BrandIcon = ({ icon: Icon }: { icon: any }) => (
+const BrandLogo = ({
+  src,
+  alt,
+  noFilter,
+}: {
+  src: string;
+  alt: string;
+  noFilter?: boolean;
+}) => (
   <motion.div
     whileHover={{ scale: 1.15, rotate: 3 }}
     whileTap={{ scale: 0.95 }}
-    className="flex items-center justify-center p-6 border border-white/10 rounded-lg transition-all duration-300 hover:border-white"
+    className="flex items-center justify-center p-6 border border-white/10 rounded-lg transition-all duration-300 hover:border-white bg-white/5 backdrop-blur-sm"
   >
-    <Icon
-      size={40}
-      className="text-white/70 hover:text-white transition-colors duration-300"
-    />
+    <div className="relative w-24 h-24">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={`object-contain transition-opacity duration-300 ${
+          noFilter
+            ? "mix-blend-multiply"
+            : "filter brightness-0 invert opacity-70 hover:opacity-100"
+        }`}
+        sizes="96px"
+      />
+    </div>
   </motion.div>
 );
 
@@ -59,8 +67,13 @@ const SlideGrid = () => {
         className="w-full flex justify-center pb-16"
       >
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-7xl w-full px-6">
-          {ICONS.map((Icon, index) => (
-            <BrandIcon key={index} icon={Icon} />
+          {CUSTOMER_LOGOS.map((logo, index) => (
+            <BrandLogo
+              key={index}
+              src={logo.src}
+              alt={`Customer logo ${index + 1}`}
+              noFilter={logo.noFilter}
+            />
           ))}
         </div>
       </motion.div>

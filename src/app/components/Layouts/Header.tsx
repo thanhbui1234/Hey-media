@@ -45,7 +45,7 @@ const Header = () => {
           aria-label="Go to homepage"
         >
           <FaFilm className="text-2xl" aria-hidden="true" />
-          <span className="tracking-widest">FLEX FILMS</span>
+          <span className="tracking-widest">96pictures</span>
         </Link>
 
         {/* Desktop Nav Links */}

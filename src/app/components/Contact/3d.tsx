@@ -5,7 +5,7 @@ export function AnimatedPinDemo() {
   return (
     <div className="mt-20 ">
       <PinContainer
-        title="219 Trung Kính, Cầu Giấy, Hà Nội"
+        title="86 Đại An, Văn Quán, Hà Đông, Hà Nội"
         href="https://maps.app.goo.gl/Mt21CCoXSX7EfLM19"
       >
         <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] md:w-[30rem] md:h-[30rem] ">
@@ -13,7 +13,7 @@ export function AnimatedPinDemo() {
             Địa chỉ
           </h3>
           <iframe
-            src="https://maps.google.com/maps?q=21.020365,105.800239&z=16&output=embed"
+            src="https://maps.google.com/maps?q=20.97901968065789,105.78889667503&z=16&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

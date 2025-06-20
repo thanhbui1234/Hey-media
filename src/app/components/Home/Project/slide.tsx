@@ -2,33 +2,34 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+// ... existing code ...
 const cardData = [
   {
-    img: "/vip1.JPG",
+    img: "/services/TVC.png",
     title: "TVC",
     subtitle: "MB BANK",
     youtubeId: "qjNOy80MyTc",
   },
   {
-    img: "/vip2.jpg",
+    img: "/services/Phim doanh nghiệp.png",
     title: "Phim Doanh Nghiệp",
     subtitle: "ĐEN",
     youtubeId: "26ozVYUZMcY",
   },
   {
-    img: "/vip3.webp",
+    img: "/services/TikTok.png",
     title: "TikTok",
     subtitle: "ARTIST 3",
     youtubeId: "mngtcfcaVrI",
   },
   {
-    img: "/vip5.webp",
+    img: "/services/Chụp ảnh1.png",
     title: "Chụp ảnh",
     subtitle: "ARTIST 4",
     youtubeId: "VR8ooa3G_5M",
   },
   {
-    img: "/vip5.webp",
+    img: "/services/Livestream.jpg",
     title: "Livestream/sự kiện",
     subtitle: "ARTIST 5",
     youtubeId: "VR8ooa3G_5M",
@@ -135,7 +136,7 @@ const ProjectSlide = () => {
                 key={card.img}
                 tabIndex={0}
                 aria-label={`Card ${card.title} by ${card.subtitle}`}
-                className="md:w-56 w-72 md:h-[350px] h-[400px] md:flex-shrink-0 rounded-xl overflow-hidden shadow-lg flex flex-col justify-end relative focus:outline-none focus:ring-2 focus:ring-white/50 transition-all cursor-pointer group"
+                className="md:w-56 w-72 md:h-[420px] h-[400px] md:flex-shrink-0 rounded-xl overflow-hidden shadow-lg flex flex-col justify-end relative focus:outline-none focus:ring-2 focus:ring-white/50 transition-all cursor-pointer group"
                 variants={cardVariants}
                 whileHover={{
                   scale: 1.05,
@@ -170,7 +171,7 @@ const ProjectSlide = () => {
                   alt={card.title}
                   fill
                   style={{ objectFit: "cover" }}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 w-full h-[600px !important] object-cover transition-transform duration-700 group-hover:scale-110"
                   priority={idx === 0}
                 />
 
