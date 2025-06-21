@@ -8,7 +8,7 @@ const CUSTOMER_LOGOS = [
   { src: "/customer/vinpearl-logo-inkythuatso-1-13-10-21-19.png" },
   { src: "/customer/logo-vinfast-inkythuatso-21-11-08-55.png" },
   { src: "/customer/FPT_logo_2010.svg.png" },
-  { src: "/customer/logo-vietcombank (1).png", noFilter: true },
+  { src: "/customer/tai-logo-ngan-hang-vietcombank.png"  },
   { src: "/customer/1349_Logo_mYi_cho_khYi_YYu_mYi.png" },
   { src: "/customer/Logo_MB_new.png" },
   { src: "/customer/Bamboo_Airways_Logo.svg.png" },
@@ -72,7 +72,7 @@ const SlideGrid = () => {
               key={index}
               src={logo.src}
               alt={`Customer logo ${index + 1}`}
-              noFilter={logo.noFilter}
+              // noFilter={logo.noFilter}
             />
           ))}
         </div>

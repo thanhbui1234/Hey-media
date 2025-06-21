@@ -58,12 +58,12 @@ const duplicatedImages = [...images, ...images];
 
 export default function PostProductionSection() {
   return (
-    <section className="relative text-white py-5 px-2 md:py-16 md:px-6 w-[370px] md:w-[1400px!important] left-[13%]">
+    <section className="relative text-white py-5 px-2 md:py-16 md:px-6 w-[370px] md:w-[180vh!important] left-[10%]">
       {/* Background stripes */}
       <div className="absolute inset-0 pointer-events-none z-0 bg-black/40 before:absolute before:inset-0 before:bg-[repeating-linear-gradient(to_right,_transparent,_transparent_90px,_rgba(255,255,255,0.05)_91px,_transparent_92px)] rounded-2xl border border-gray-600/30" />
 
       {/* Main content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto p-10 rounded-2xl">
+      <div className="relative z-10 max-w-[180vh] mx-auto p-10 rounded-2xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Column */}
           <div className="relative pb-32">
