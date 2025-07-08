@@ -112,7 +112,7 @@ const ProjectSlide = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            Dịch vụ nổi bật
+            Dịch vụ
           </motion.h2>
           <motion.div
             className="h-1 w-24 bg-white/50 mx-auto mt-2 rounded-full"

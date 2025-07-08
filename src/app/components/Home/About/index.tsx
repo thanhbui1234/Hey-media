@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const TextGenerateEffect = ({
@@ -89,7 +90,7 @@ export default function AboutCompany() {
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-px bg-gradient-to-r from-white to-transparent"></div>
                   <h2 className="text-2xl md:text-3xl font-light tracking-wider text-white/95 uppercase">
-                    Bắt đầu
+                    Về chúng tôi
                   </h2>
                 </div>
 
@@ -111,6 +112,16 @@ export default function AboutCompany() {
                     className="text-lg md:text-xl font-light text-white/80 leading-relaxed drop-shadow-lg italic"
                   />
                 </div>
+
+               <div className="flex justify-center mt-8">
+                <Link href="/about">
+                  <p className="group relative text-white cursor-pointer font-light tracking-wide flex items-center gap-2">
+                    <span className="text-orange-400 animate-bounce text-2xl">→</span>
+                    <span className="absolute left-0 bottom-0 w-full h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50 animate-pulse"></span>
+                    Về chúng tôi
+                  </p>
+                </Link>
+              </div>
               </div>
 
               {/* Right Column - Tầm nhìn */}

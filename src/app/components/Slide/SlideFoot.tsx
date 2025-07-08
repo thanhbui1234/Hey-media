@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const slides = [
-  "Chúng tôi tạo ra 96pictures để giải quyết các vấn đề của Khách hàng, không ngừng cải tiến và tinh thần hợp tác.",
+  "Chúng tôi tạo ra Hey Media để giải quyết các vấn đề của Khách hàng, không ngừng cải tiến và tinh thần hợp tác.",
   "Mang đến sự xuất sắc trong điện ảnh thông qua cách kể chuyện sáng tạo và công nghệ tiên tiến",
   "Tạo ra những trải nghiệm đáng nhớ thu hút khán giả toàn cầu",
   "Tầm nhìn của bạn, chuyên môn của chúng tôi - Tạo ra những bộ phim để lại ấn tượng sâu sắc",

@@ -1,7 +1,6 @@
 "use client";
 
 import BannerServices from "@/app/components/Services/BannerServices";
-import ChooseUs from "@/app/components/Services/ChooseUs";
 import PostProductionSection from "@/app/components/Services/postProduction";
 import InfiniteSlider from "@/app/components/Services/Suppoort";
 import { useRouter } from "next/navigation";
@@ -26,7 +25,7 @@ const Services = () => {
   return (
     <>
       <BannerServices />
-      <ChooseUs />
+      {/* <ChooseUs /> */}
       {/* Slider đi từ trái qua phải */}
       {/* <InfiniteSlider
         images={images}
