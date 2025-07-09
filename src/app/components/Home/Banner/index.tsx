@@ -1,6 +1,5 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import React, { useRef } from "react";
 
 const ContainerScroll = ({
@@ -116,22 +115,26 @@ const Banner = () => {
   return (
     <div className="w-full h-full relative overflow-hidden rounded-lg">
       <div className="w-full h-full relative">
-        <Image
-          src="/pexels-pixabay-459203.jpg"
-          alt="Banner Image"
-          fill
-          className="object-cover"
-          quality={75}
-          priority
-          sizes="(max-width: 768px) 90vw, 80vw"
-        />
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/LoveInsta.com_Instagram_Media_001_3080950797530052224.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Overlay */}
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Centered Text Content */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-4xl md:text-7xl font-bold text-white mb-4">
-              Chào mừng tới <span className="text-[#FF5F38]">Hey Media</span>
+              Chào mừng tới <span className="text-black">Hey Media</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto px-4">
               Bắt sóng thời đại – Dẫn lối truyền thông.

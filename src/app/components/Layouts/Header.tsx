@@ -7,9 +7,9 @@ import { IoClose, IoMenu } from "react-icons/io5";
 
 const navLinks = [
   { name: "Trang chủ", href: "/" },
-  { name: "Dự án", href: "/projects" },
-  { name: "Dịch vụ", href: "/services" },
   { name: "Về chúng tôi", href: "/about" },
+  { name: "Dịch vụ", href: "/services" },
+  { name: "Dự án", href: "/projects" },
 ];
 
 const Header = () => {

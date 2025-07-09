@@ -1,5 +1,6 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 // ... existing code ...
@@ -9,30 +10,35 @@ const cardData = [
     title: "TVC",
     subtitle: "MB BANK",
     youtubeId: "qjNOy80MyTc",
+    video: "/videos/video1.mp4",
   },
   {
     img: "/services/Phim doanh nghiệp.png",
     title: "Phim Doanh Nghiệp",
     subtitle: "ĐEN",
     youtubeId: "26ozVYUZMcY",
+    video: "/videos/video2.mp4",
   },
   {
     img: "/services/TikTok.png",
     title: "TikTok",
     subtitle: "ARTIST 3",
     youtubeId: "mngtcfcaVrI",
+    video: "/videos/video3.mp4",
   },
   {
     img: "/services/Chụp ảnh1.png",
     title: "Chụp ảnh",
     subtitle: "ARTIST 4",
     youtubeId: "VR8ooa3G_5M",
+    video: "/videos/video4.mp4",
   },
   {
     img: "/services/Livestream.jpg",
     title: "Livestream/sự kiện",
     subtitle: "ARTIST 5",
     youtubeId: "VR8ooa3G_5M",
+    video: "/videos/video5.mp4",
   },
 ];
 
@@ -62,37 +68,37 @@ const cardVariants: Variants = {
 };
 
 const ProjectSlide = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeYoutubeId, setActiveYoutubeId] = useState<string | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const router = useRouter();
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   const handleOpenModal = useCallback((youtubeId: string) => {
-    setActiveYoutubeId(youtubeId);
-    setIsModalOpen(true);
+    // This function is no longer used for modal, but kept for now
+    // setActiveYoutubeId(youtubeId);
+    // setIsModalOpen(true);
   }, []);
 
   const handleCloseModal = useCallback(() => {
-    setIsModalOpen(false);
-    setActiveYoutubeId(null);
+    // setIsModalOpen(false);
+    // setActiveYoutubeId(null);
   }, []);
 
   // Close modal on ESC
   useEffect(() => {
-    if (!isModalOpen) return;
+    // if (!isModalOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleCloseModal();
+      // if (e.key === "Escape") handleCloseModal();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isModalOpen, handleCloseModal]);
+  }, []); // Removed isModalOpen dependency
 
   // Focus trap for modal
   useEffect(() => {
-    if (isModalOpen && closeBtnRef.current) {
-      closeBtnRef.current.focus();
-    }
-  }, [isModalOpen]);
+    // if (isModalOpen && closeBtnRef.current) {
+    //   closeBtnRef.current.focus();
+    // }
+  }, []); // Removed isModalOpen dependency
 
   return (
     <>
@@ -125,7 +131,7 @@ const ProjectSlide = () => {
 
         <div className="relative z-10 overflow-hidden mb-28">
           <motion.div
-            className="flex md:flex-row flex-col justify-center items-center md:gap-4 gap-6 px-4 max-w-7xl mx-auto md:overflow-x-auto pb-4"
+            className="flex md:flex-row flex-col justify-center items-center md:gap-4 gap-6 px-4  mx-auto md:overflow-x-auto pb-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
@@ -136,22 +142,15 @@ const ProjectSlide = () => {
                 key={card.img}
                 tabIndex={0}
                 aria-label={`Card ${card.title} by ${card.subtitle}`}
-                className="md:w-56 w-72 md:h-[420px] h-[400px] md:flex-shrink-0 rounded-xl overflow-hidden shadow-lg flex flex-col justify-end relative focus:outline-none focus:ring-2 focus:ring-white/50 transition-all cursor-pointer group"
+                className="md:w-56 w-72 md:h-[500px] h-[500px] md:flex-shrink-0 rounded-xl overflow-hidden shadow-lg flex flex-col justify-end relative focus:outline-none focus:ring-2 focus:ring-white/50 transition-all cursor-pointer group"
                 variants={cardVariants}
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.7)",
                   zIndex: 20,
                 }}
-                onHoverStart={() => setHoveredIndex(idx)}
-                onHoverEnd={() => setHoveredIndex(null)}
-                onClick={() => handleOpenModal(card.youtubeId)}
-                onKeyDown={(e) => {
-                  if ((e.key === "Enter" || e.key === " ") && card.youtubeId) {
-                    e.preventDefault();
-                    handleOpenModal(card.youtubeId);
-                  }
-                }}
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity z-10" />
 
@@ -166,17 +165,29 @@ const ProjectSlide = () => {
                   }}
                 />
 
-                <Image
-                  src={card.img}
-                  alt={card.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  className="absolute inset-0 w-full h-[600px !important] object-cover transition-transform duration-700 group-hover:scale-110"
-                  priority={idx === 0}
-                />
+                {hoveredIndex === idx ? (
+                  <video
+                    src={card.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectFit: "cover" }}
+                  />
+                ) : (
+                  <Image
+                    src={card.img}
+                    alt={card.title}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="absolute inset-0 w-full h-[600px !important] object-cover transition-transform duration-700 group-hover:scale-110"
+                    priority={idx === 0}
+                  />
+                )}
 
                 {/* Play button overlay */}
-                <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                {/* <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity">
                   <motion.div
                     className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
@@ -184,17 +195,27 @@ const ProjectSlide = () => {
                   >
                     <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[16px] border-l-white border-b-[8px] border-b-transparent ml-1"></div>
                   </motion.div>
-                </div>
+                </div> */}
 
                 <div className="relative z-20 p-6 transform transition-transform duration-300 group-hover:translate-y-0 translate-y-4">
                   <motion.div
-                    className="text-white text-xl font-bold mb-1 group-hover:text-gray-200 transition-colors"
+                    className="text-white text-xl font-bold mb-1 group-hover:text-gray-200 transition-colors cursor-pointer"
                     initial={{ opacity: 0.8 }}
                     whileHover={{ opacity: 1 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/services`);
+                    }}
                   >
                     {card.title}
                   </motion.div>
-                  <div className="text-white/80 text-sm group-hover:text-white/90 transition-colors">
+                  <div
+                    className="text-white/80 text-sm group-hover:text-white/90 transition-colors cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/services`);
+                    }}
+                  >
                     {card.subtitle}
                   </div>
                 </div>
@@ -204,43 +225,7 @@ const ProjectSlide = () => {
         </div>
       </div>
 
-      {isModalOpen && activeYoutubeId && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md"
-          aria-modal="true"
-          role="dialog"
-          tabIndex={-1}
-          onClick={handleCloseModal}
-        >
-          <motion.div
-            className="relative bg-neutral-900 rounded-2xl shadow-2xl p-0 max-w-4xl w-full flex flex-col items-center overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          >
-            <button
-              ref={closeBtnRef}
-              onClick={handleCloseModal}
-              aria-label="Đóng video"
-              className="absolute top-3 right-3 text-white bg-black/60 backdrop-blur-sm rounded-full w-10 h-10 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white/50 z-10 hover:bg-black/80 transition-colors"
-            >
-              <span className="text-2xl">×</span>
-            </button>
-            <iframe
-              width="960"
-              height="540"
-              src={`https://www.youtube.com/embed/${activeYoutubeId}?autoplay=1&rel=0`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="rounded-xl w-full aspect-video"
-            ></iframe>
-          </motion.div>
-        </div>
-      )}
+      {/* Removed modal section as per new_code */}
     </>
   );
 };

@@ -18,15 +18,17 @@ const BannerAbout = () => {
       ref={containerRef}
       className="relative h-screen w-full overflow-hidden"
     >
-      <motion.div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url('/khabenh.jpg')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          y: backgroundY,
-        }}
-      />
+      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
+        <video
+          src="/videos/aboutus.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "center" }}
+        />
+      </motion.div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.8)_25%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.1)_75%,transparent_100%)]" />
 
       <div className="relative h-full flex items-end pb-24 px-8 md:px-16 lg:px-24">

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -68,9 +69,6 @@ export default function AboutCompany() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 z-1"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 z-1"></div>
 
-        {/* Cinematic Light Streaks */}
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent z-2"></div>
-        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent z-2"></div>
 
         {/* Main Content */}
         <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-6">
@@ -133,24 +131,7 @@ export default function AboutCompany() {
                   </h2>
                 </div>
 
-                <div className="space-y-6">
-                  <TextGenerateEffect
-                    words="Trở thành đơn vị tiên phong trong việc kể chuyện bằng hình ảnh, nơi mà mỗi thước phim, mỗi khung hình đều mang giá trị kết nối con người với cảm xúc thật."
-                    className="text-lg md:text-xl font-light text-white/90 leading-relaxed drop-shadow-lg"
-                  />
-
-                  <div className="w-8 h-px bg-white/40 my-6"></div>
-
-                  <TextGenerateEffect
-                    words="Chúng tôi hướng đến việc xây dựng một hệ sinh thái sáng tạo bền vững – nơi những người trẻ có thể tự do thể hiện góc nhìn riêng, và cùng nhau tạo ra những sản phẩm mang dấu ấn Việt Nam ra thế giới."
-                    className="text-lg md:text-xl font-light text-white/85 leading-relaxed drop-shadow-lg"
-                  />
-
-                  <TextGenerateEffect
-                    words="Tầm nhìn của chúng tôi không chỉ nằm ở chất lượng hình ảnh, mà còn ở chiều sâu nội dung – vì chúng tôi tin rằng, nội dung tốt có thể thay đổi cách người ta nhìn nhận về thế giới."
-                    className="text-lg md:text-xl font-light text-white/80 leading-relaxed drop-shadow-lg italic"
-                  />
-                </div>
+                <Image src="/img/tamnhin.jpg" alt="About" width={400} height={400} className="rounded-lg" />
               </div>
             </div>
 
