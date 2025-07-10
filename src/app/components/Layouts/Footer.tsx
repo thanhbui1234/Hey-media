@@ -83,7 +83,7 @@ const Footer = () => {
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <FaFilm className="text-5xl text-[#FF5F38]" />
+              <FaFilm className="text-5xl text-white" />
             </motion.div>
             <h2 className="text-5xl md:text-6xl font-black tracking-wider bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
               HEY MEDIA
@@ -103,25 +103,25 @@ const Footer = () => {
             variants={itemVariants}
           >
             <div className="flex items-center gap-2 text-gray-400">
-              <FaPlay className="text-[#FF5F38]" />
+              <FaPlay className="text-gray-300" />
               <span className="text-sm">Video Production</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <FaCamera className="text-[#FF5F38]" />
+              <FaCamera className="text-gray-300" />
               <span className="text-sm">Photography</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <FaEdit className="text-[#FF5F38]" />
+              <FaEdit className="text-gray-300" />
               <span className="text-sm">Post Production</span>
             </div>
           </motion.div>
 
           <motion.div variants={itemVariants}>
             <Link href="/contact">
-              <ButtonCustom
-                className="cursor-pointer text-lg px-8 py-4 bg-gradient-to-r from-[#FF5F38] to-[#FF7A5A] hover:from-[#E54A2B] hover:to-[#FF5F38] shadow-lg hover:shadow-xl transition-all duration-300"
-                text="Bắt đầu hợp tác"
-              />
+                          <ButtonCustom
+              className="cursor-pointer text-lg px-8 py-4 bg-white hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 text-black border border-gray-200"
+              text="Bắt đầu hợp tác"
+            />
             </Link>
           </motion.div>
         </motion.div>
@@ -136,7 +136,7 @@ const Footer = () => {
         >
           {/* Studio Info */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-6 text-[#FF5F38]">Studio</h3>
+            <h3 className="text-2xl font-bold mb-6 text-white">Studio</h3>
             <p className="text-gray-300 text-base leading-relaxed mb-6">
               Hey Media là studio sáng tạo chuyên về sản xuất video, nhiếp ảnh
               và các dịch vụ media marketing. Chúng tôi mang đến những giải pháp
@@ -166,7 +166,7 @@ const Footer = () => {
 
           {/* Quick Navigation */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-xl font-bold mb-6 text-[#FF5F38]">
+            <h3 className="text-xl font-bold mb-6 text-white">
               Điều hướng
             </h3>
             <ul className="space-y-4">
@@ -184,9 +184,9 @@ const Footer = () => {
                 >
                   <Link
                     href={item.href}
-                    className="text-gray-400 hover:text-[#FF5F38] transition-colors duration-300 flex items-center gap-2 group"
+                    className="text-gray-400 hover:text-gray-200 transition-colors duration-300 flex items-center gap-2 group"
                   >
-                    <span className="w-2 h-2 bg-gray-600 rounded-full group-hover:bg-[#FF5F38] transition-colors"></span>
+                    <span className="w-2 h-2 bg-gray-600 rounded-full group-hover:bg-gray-300 transition-colors"></span>
                     {item.name}
                   </Link>
                 </motion.li>
@@ -196,7 +196,7 @@ const Footer = () => {
 
           {/* Social & Connect */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-xl font-bold mb-6 text-[#FF5F38]">Kết nối</h3>
+            <h3 className="text-xl font-bold mb-6 text-white">Kết nối</h3>
             <p className="text-gray-400 mb-6 text-sm">
               Theo dõi chúng tôi để cập nhật những dự án mới nhất
             </p>
@@ -241,7 +241,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <FaFilm className="text-[#FF5F38]" />
+              <FaFilm className="text-white" />
               <span>
                 © {new Date().getFullYear()} Hey Media Studio. All rights
                 reserved.
@@ -250,13 +250,13 @@ const Footer = () => {
             <div className="flex items-center gap-6 text-sm text-gray-400">
               <Link
                 href="/privacy"
-                className="hover:text-[#FF5F38] transition-colors"
+                className="hover:text-gray-200 transition-colors"
               >
                 Chính sách bảo mật
               </Link>
               <Link
                 href="/terms"
-                className="hover:text-[#FF5F38] transition-colors"
+                className="hover:text-gray-200 transition-colors"
               >
                 Điều khoản sử dụng
               </Link>

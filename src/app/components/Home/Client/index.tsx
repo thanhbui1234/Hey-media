@@ -19,6 +19,20 @@ const CUSTOMER_LOGOS = [
   { src: "/customer/Mercedes-Logo.svg.png" },
   { src: "/customer/Vietnam_Airlines_logo.svg.png" },
   { src: "/customer/4f9f272fee9bc5f0a287a7477985f8ad.png" },
+  { src: "/customer/vinpearl-logo-inkythuatso-1-13-10-21-19.png" },
+  { src: "/customer/logo-vinfast-inkythuatso-21-11-08-55.png" },
+  { src: "/customer/FPT_logo_2010.svg.png" },
+  { src: "/customer/tai-logo-ngan-hang-vietcombank.png"  },
+  { src: "/customer/1349_Logo_mYi_cho_khYi_YYu_mYi.png" },
+  { src: "/customer/Logo_MB_new.png" },
+  { src: "/customer/Bamboo_Airways_Logo.svg.png" },
+  { src: "/customer/Logo-Vinhomes.png" },
+  { src: "/customer/VPBank_logo.svg.png" },
+  { src: "/customer/Logo-Cong-ty-CP-Tap-doan-Ecopark.webp" },
+  { src: "/customer/Logo_TPBank.svg.png" },
+  { src: "/customer/Mercedes-Logo.svg.png" },
+  { src: "/customer/Vietnam_Airlines_logo.svg.png" },
+  { src: "/customer/4f9f272fee9bc5f0a287a7477985f8ad.png" },
 ];
 
 const BrandLogo = ({
@@ -31,11 +45,11 @@ const BrandLogo = ({
   noFilter?: boolean;
 }) => (
   <motion.div
-    whileHover={{ scale: 1.15, rotate: 3 }}
+    whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.95 }}
-    className="flex items-center justify-center p-6 border border-white/10 rounded-lg transition-all duration-300 hover:border-white bg-white/5 backdrop-blur-sm"
+    className="flex items-center justify-center py-2 transition-all duration-300"
   >
-    <div className="relative w-24 h-24">
+    <div className="relative w-16 h-16">
       <Image
         src={src}
         alt={alt}
@@ -45,7 +59,7 @@ const BrandLogo = ({
             ? "mix-blend-multiply"
             : "filter brightness-0 invert opacity-70 hover:opacity-100"
         }`}
-        sizes="96px"
+        sizes="300px"
       />
     </div>
   </motion.div>
@@ -66,7 +80,7 @@ const SlideGrid = () => {
         transition={{ duration: 1, ease: "easeOut" }}
         className="w-full flex justify-center pb-16"
       >
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-7xl w-full px-6">
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-8 xl:grid-cols-8 gap-3 max-w-7xl w-full px-6">
           {CUSTOMER_LOGOS.map((logo, index) => (
             <BrandLogo
               key={index}

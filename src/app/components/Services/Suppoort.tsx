@@ -1,10 +1,11 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 interface InfiniteSliderProps {
   images: string[];
   direction?: "left" | "right";
   title: string;
-  description: string;
+  description: string[];
   speed?: number;
 }
 
@@ -17,8 +18,7 @@ export default function InfiniteSlider({
 }: InfiniteSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const x = useRef(0);
-  const animationRef = useRef<number>(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(220);
   const [containerWidth, setContainerWidth] = useState(0);
 
@@ -46,37 +46,35 @@ export default function InfiniteSlider({
     return () => window.removeEventListener("resize", updateSizes);
   }, []);
 
-  // Animation loop
+  // Update transform khi currentIndex thay đổi
   useEffect(() => {
+    if (!containerRef.current || !images || images.length === 0) return;
+
+    const totalWidth = (itemWidth + 16); // itemWidth + gap
+    const translateX = -currentIndex * totalWidth;
+    
+    containerRef.current.style.transform = `translateX(${translateX}px)`;
+    containerRef.current.style.transition = "transform 0.3s ease-out";
+  }, [currentIndex, itemWidth, images]);
+
+  const handlePrevious = () => {
     if (!images || images.length === 0) return;
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
-    const animate = () => {
-      if (!containerRef.current) return;
-
-      const totalWidth = images.length * (itemWidth + 16); // itemWidth + gap
-
-      x.current += direction === "left" ? -speed : speed;
-
-      // Reset position khi scroll hết một set
-      if (Math.abs(x.current) >= totalWidth) {
-        x.current = 0;
+  const handleNext = () => {
+    if (!images || images.length === 0) return;
+    const itemsPerView = Math.floor(containerWidth / (itemWidth + 16));
+    const maxVisibleIndex = Math.max(0, images.length - itemsPerView);
+    
+    setCurrentIndex((prev) => {
+      // Nếu đang ở vị trí cuối cùng có thể hiển thị, quay về đầu
+      if (prev >= maxVisibleIndex) {
+        return 0;
       }
-
-      containerRef.current.style.transform = `translateX(${x.current}px)`;
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [images, itemWidth, speed, direction]);
-
-  const duplicatedImages =
-    images && images.length > 0 ? [...images, ...images, ...images] : [];
+      return prev + 1;
+    });
+  };
 
   // Nếu không có images, hiển thị placeholder
   if (!images || images.length === 0) {
@@ -84,9 +82,11 @@ export default function InfiniteSlider({
       <div className="w-full flex flex-col items-center py-6 md:py-10 text-white px-4">
         <div className="w-full max-w-7xl rounded-xl md:rounded-2xl p-6 md:p-10 border border-gray-500/20 overflow-hidden bg-[#111111] shadow-xl">
           <h2 className="text-xl md:text-3xl font-semibold mb-2">{title}</h2>
-          <p className="text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
-            {description}
-          </p>
+          <div className="text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
+            {description.map((line, index) => (
+              <p className="text-sm text-gray-400" key={index}>{line}</p>
+            ))}
+          </div>
           <div className="text-center py-10">
             <p className="text-gray-500">No images provided</p>
           </div>
@@ -101,36 +101,83 @@ export default function InfiniteSlider({
         ref={wrapperRef}
         className="w-full max-w-7xl rounded-xl md:rounded-2xl p-6 md:p-10 border border-gray-500/20 overflow-hidden bg-[#111111] shadow-xl"
       >
-        <h2 className="text-xl md:text-3xl font-semibold mb-2">{title}</h2>
-        <p className="text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
-          {description}
-        </p>
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-xl md:text-3xl font-semibold">{title}</h2>
+        </div>
+        
+        <div className="text-xs md:text-sm text-gray-300 mb-4 md:mb-6">
+          {description.map((line, index) => (
+            <div key={index}>{line}</div>
+          ))}
+        </div>
 
-        <div className="overflow-hidden">
-          <div
-            ref={containerRef}
-            className="flex gap-3 md:gap-4"
-            style={{ width: "fit-content" }}
+        <div className="relative">
+          {/* Previous Button */}
+          <button
+            onClick={handlePrevious}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-black/60 hover:bg-black/80 transition-colors duration-200 border border-white/20"
+            aria-label="Previous image"
           >
-            {duplicatedImages.map((src, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 rounded-lg md:rounded-xl overflow-hidden border border-white/10"
-                style={{
-                  width: `${itemWidth}px`,
-                  height: `${itemWidth}px`,
-                }}
-              >
-                <img
-                  src={src}
-                  alt={`Slide ${i}`}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-black/60 hover:bg-black/80 transition-colors duration-200 border border-white/20"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+          </button>
+
+          <div className="overflow-hidden">
+            <div
+              ref={containerRef}
+              className="flex gap-3 md:gap-4"
+              style={{ width: "fit-content" }}
+            >
+              {images.map((src, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 rounded-lg md:rounded-xl overflow-hidden border border-white/10"
+                  style={{
+                    width: `${itemWidth}px`,
+                    height: `${itemWidth}px`,
+                  }}
+                >
+                  <img
+                    src={src}
+                    alt={`Slide ${i}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Indicator dots */}
+        {/* <div className="flex justify-center mt-4 gap-2">
+          {(() => {
+            const itemsPerView = Math.floor(containerWidth / (itemWidth + 16));
+            const maxVisibleIndex = Math.max(0, images.length - itemsPerView);
+            const totalDots = maxVisibleIndex + 1;
+            
+            return Array.from({ length: totalDots }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                  index === currentIndex
+                    ? "bg-white"
+                    : "bg-white/30 hover:bg-white/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ));
+          })()}
+        </div> */}
       </div>
     </div>
   );
@@ -152,7 +199,11 @@ export function SliderDemo() {
       <InfiniteSlider
         images={sampleImages}
         title="Our Portfolio"
-        description="Những dự án tiêu biểu của chúng tôi"
+        description={[
+          "Những dự án tiêu biểu của chúng tôi",
+          "Với hơn 10 năm kinh nghiệm",
+          "Chúng tôi tự hào mang đến những sản phẩm chất lượng cao"
+        ]}
         direction="left"
         speed={0.8}
       />
@@ -160,7 +211,11 @@ export function SliderDemo() {
       <InfiniteSlider
         images={sampleImages}
         title="Behind The Scenes"
-        description="Hậu trường sản xuất"
+        description={[
+          "Hậu trường sản xuất",
+          "Quy trình làm việc chuyên nghiệp",
+          "Đội ngũ nhiệt huyết và sáng tạo"
+        ]}
         direction="right"
         speed={0.6}
       />

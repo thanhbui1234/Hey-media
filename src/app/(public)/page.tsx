@@ -7,13 +7,19 @@ import BannerSlideFoot from "@/app/components/Slide/SlideFoot";
 export default function Home() {
   return (
     <main className="relative">
-      <div className="relative z-10">
+      <div id="home" className="relative z-10">
         <HeroSection />
       </div>
-      <AboutCompany />
-      <Project />
+      <div id="about">
+        <AboutCompany />
+      </div>
+      <div id="services">
+        <Project />
+      </div>
+      <div id="projects">
+        <Services />
+      </div>
       {/* <CollapsibleSectionPage /> */}
-      <Services />
       <SlideGrid />
       <BannerSlideFoot />
     </main>

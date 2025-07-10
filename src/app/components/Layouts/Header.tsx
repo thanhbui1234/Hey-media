@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFilm } from "react-icons/fa";
 import { IoClose, IoMenu } from "react-icons/io5";
 
@@ -14,7 +14,42 @@ const navLinks = [
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const pathname = usePathname();
+
+  // Scroll spy logic - only for home page
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
+
+    const handleScroll = () => {
+      const sections = ["home", "about", "projects", "services"];
+      const scrollPosition = window.scrollY + 100; // Offset for header
+      let foundSection = "home"; // Default to home
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            foundSection = sections[i];
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(foundSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
 
   const handleToggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -28,7 +63,19 @@ const Header = () => {
 
   // Function to check if a link is active
   const isActiveLink = (href: string) => {
-    return pathname === href;
+    if (pathname === "/") {
+      // On home page, use scroll spy logic
+      const sectionMap: { [key: string]: string } = {
+        "/": "home",
+        "/about": "about", 
+        "/projects": "projects",
+        "/services": "services"
+      };
+      return sectionMap[href] === activeSection;
+    } else {
+      // On other pages, use normal pathname matching
+      return pathname === href;
+    }
   };
 
   return (
@@ -40,7 +87,7 @@ const Header = () => {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-white font-bold text-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="flex items-center gap-2 text-white font-bold text-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
           tabIndex={0}
           aria-label="Go to homepage"
         >
@@ -56,17 +103,18 @@ const Header = () => {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className={`relative px-1 text-base font-medium transition-colors
+                  className={`relative px-1 text-base font-medium transition-all duration-300
     outline-none focus:outline-none focus-visible:outline-none 
-    focus:ring-2 focus:ring-orange-500
-    ${isActive ? "text-orange-400" : "text-white hover:text-orange-300"}`}
+    focus:ring-2 focus:ring-gray-400 group
+    ${isActive ? "text-white font-bold" : "text-white hover:text-white hover:font-bold"}`}
                   tabIndex={0}
                   aria-label={link.name}
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-orange-400 rounded-full" />
+                    <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-white rounded-full" />
                   )}
+                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white rounded-full transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
             );
@@ -76,10 +124,10 @@ const Header = () => {
         {/* Desktop Let's Talk Button */}
         <Link
           href="/contact"
-          className={`hidden md:block font-semibold px-6 py-2 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors ${
+          className={`hidden md:block font-semibold px-6 py-2 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors ${
             isActiveLink("/contact")
-              ? "bg-orange-500 text-white"
-              : "bg-white text-black hover:bg-orange-100"
+              ? "bg-white text-black"
+              : "bg-white text-black hover:bg-gray-100"
           }`}
           tabIndex={0}
           aria-label="Let's Talk"
@@ -91,7 +139,7 @@ const Header = () => {
         <button
           onClick={handleToggleMobileMenu}
           onKeyDown={handleKeyDown}
-          className="md:hidden text-white p-2 focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-lg transition-transform duration-200 hover:scale-110 active:scale-95"
+          className="md:hidden text-white p-2 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded-lg transition-transform duration-200 hover:scale-110 active:scale-95"
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           tabIndex={0}
         >
@@ -128,7 +176,7 @@ const Header = () => {
                     href={link.href}
                     className={`block px-6 py-4 text-base font-medium transition-colors focus:outline-none focus:ring-2 ${
                       isActive
-                        ? "text-orange-400 "
+                        ? "text-black font-semibold"
                         : "text-gray-800 hover:bg-gray-50"
                     }`}
                     onClick={handleToggleMobileMenu}
@@ -143,10 +191,10 @@ const Header = () => {
             <li className="p-4">
               <Link
                 href="/contact"
-                className={`block w-full font-semibold px-6 py-3 rounded-full text-center shadow focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors ${
+                className={`block w-full font-semibold px-6 py-3 rounded-full text-center shadow focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors ${
                   isActiveLink("/contact")
-                    ? "bg-orange-600 text-white"
-                    : "bg-orange-500 text-white hover:bg-orange-600"
+                    ? "bg-black text-white"
+                    : "bg-black text-white hover:bg-gray-800"
                 }`}
                 onClick={handleToggleMobileMenu}
                 tabIndex={0}
