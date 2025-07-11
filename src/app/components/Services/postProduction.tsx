@@ -71,8 +71,8 @@ export default function PostProductionSection() {
             {/* padding-bottom for space under content */}
             <h2 className="text-3xl font-bold mb-2">Livestream/sự kiện</h2>
             <p className="text-sm text-gray-300 mb-6">
-              Dịch vụ biên tập, chỉnh màu và hiệu ứng hình ảnh để hiện thực hóa
-              tầm nhìn của bạn.
+              Sản xuất livestream sự kiện với hình ảnh chất lượng, âm thanh ổn
+              định, kết nối khán giả theo thời gian thực.
             </p>
             {/* Slider positioned at bottom */}
             <div className="absolute bottom-0 left-0 w-full overflow-hidden rounded-xl border border-gray-500/40">

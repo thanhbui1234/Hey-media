@@ -69,7 +69,6 @@ export default function AboutCompany() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 z-1"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 z-1"></div>
 
-
         {/* Main Content */}
         <div className="relative z-10 w-full min-h-screen flex items-center justify-center px-6">
           <div className="w-full max-w-7xl mx-auto">
@@ -94,32 +93,29 @@ export default function AboutCompany() {
 
                 <div className="space-y-6">
                   <TextGenerateEffect
-                    words="Mọi ý tưởng lớn đều bắt đầu từ những điều nhỏ nhất."
+                    words="Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân."
                     className="text-xl md:text-2xl font-light text-white/90 leading-relaxed drop-shadow-lg"
                   />
 
                   <div className="w-8 h-px bg-white/40 my-6"></div>
 
                   <TextGenerateEffect
-                    words="Một chiếc máy quay cầm tay, vài dòng kịch bản nguệch ngoạc và một niềm tin: nội dung chân thật sẽ chạm đến trái tim người xem. Chúng tôi không học làm phim chuyên nghiệp, nhưng chúng tôi biết cách lắng nghe, kể lại và làm cho câu chuyện trở nên sống động."
+                    words="Với đội ngũ trẻ, am hiểu xu hướng truyền thông và tư duy sáng tạo linh hoạt, chúng tôi luôn mang đến những sản phẩm chỉn chu, chất lượng, đáp ứng yêu cầu của khách hàng. Hey Media luôn sẵn sàng đồng hành cùng khách hàng trong hành trình xây dựng hình ảnh, lan tỏa thông điệp và tạo dấu ấn thương hiệu bằng những sản phẩm truyền thông ấn tượng, hiệu quả."
                     className="text-lg md:text-xl font-light text-white/85 leading-relaxed drop-shadow-lg"
-                  />
-
-                  <TextGenerateEffect
-                    words="Mỗi dự án, mỗi khung hình đều là một hành trình – không chỉ của nhân vật, mà còn là hành trình trưởng thành của chính chúng tôi."
-                    className="text-lg md:text-xl font-light text-white/80 leading-relaxed drop-shadow-lg italic"
                   />
                 </div>
 
-               <div className="flex justify-center mt-8">
-                <Link href="/about">
-                  <p className="group relative text-white cursor-pointer font-light tracking-wide flex items-center gap-2">
-                    <span className="text-orange-400 animate-bounce text-2xl">→</span>
-                    <span className="absolute left-0 bottom-0 w-full h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50 animate-pulse"></span>
-                    Về chúng tôi
-                  </p>
-                </Link>
-              </div>
+                <div className="flex justify-center mt-8">
+                  <Link href="/about">
+                    <p className="group relative text-white cursor-pointer font-light tracking-wide flex items-center gap-2">
+                      <span className="text-orange-400 animate-bounce text-2xl">
+                        →
+                      </span>
+                      <span className="absolute left-0 bottom-0 w-full h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50 animate-pulse"></span>
+                      Về chúng tôi
+                    </p>
+                  </Link>
+                </div>
               </div>
 
               {/* Right Column - Tầm nhìn */}
@@ -131,7 +127,13 @@ export default function AboutCompany() {
                   </h2>
                 </div>
 
-                <Image src="/img/tamnhin.jpg" alt="About" width={400} height={400} className="rounded-lg" />
+                <Image
+                  src="/img/tamnhin.jpg"
+                  alt="About"
+                  width={400}
+                  height={400}
+                  className="rounded-lg"
+                />
               </div>
             </div>
 

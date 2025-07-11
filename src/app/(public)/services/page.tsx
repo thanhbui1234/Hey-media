@@ -25,7 +25,6 @@ const images2 = [
   "/vip1.JPG",
   "/vip2.JPG",
   "/vip5.webp",
-
 ];
 const Services = () => {
   const router = useRouter();
@@ -44,50 +43,40 @@ const Services = () => {
       <InfiniteSlider
         images={images}
         direction="left"
-          title="TVC"
+        title="TVC"
         description={[
-  "Diễn viên, người mẫu, và nhân sự theo yêu cầu sản xuất.",
-  "Đội ngũ chuyên nghiệp, sẵn sàng hỗ trợ mọi quy mô dự án.",
-  "Linh hoạt theo từng concept, đảm bảo đúng tiến độ và chất lượng."
-]}
-
+          "Sản xuất TVC quảng cáo sáng tạo, truyền tải thông điệp rõ ràng, giúp thương hiệu ghi dấu ấn mạnh mẽ trên thị trường.",
+        ]}
       />
 
-<InfiniteSlider
-  images={images2}
-  direction="left"
-  title="Phim Doanh Nghiệp"
-  description={[
-    "Giới thiệu doanh nghiệp chuyên nghiệp và ấn tượng.",
-    "Truyền tải thông điệp thương hiệu một cách rõ ràng và sáng tạo.",
-    "Tăng cường uy tín và độ nhận diện với video chất lượng cao."
-  ]}
-/>
+      <InfiniteSlider
+        images={images2}
+        direction="left"
+        title="Phim Doanh Nghiệp"
+        description={[
+          "Sản xuất video giới thiệu doanh nghiệp nhằm hỗ trợ khách hàng xây dựng hình ảnh chuyên nghiệp, tăng độ tin cậy và định vị thương hiệu.",
+        ]}
+      />
 
+      <InfiniteSlider
+        speed={0.9}
+        images={images}
+        direction="left"
+        title="TikTok"
+        description={[
+          " Sáng tạo nội dung theo xu hướng, tăng khả năng tiếp cận và tương tác trên nền tảng Tiktok theo đúng định hướng khách hàng",
+        ]}
+      />
 
-<InfiniteSlider
-  speed={0.9}
-  images={images}
-  direction="left"
-  title="TikTok"
-  description={[
-    "Sản xuất nội dung sáng tạo, thu hút người xem nhanh.",
-    "Tối ưu hoá xu hướng để tăng tương tác và lượt xem.",
-    "Phù hợp cho chiến dịch viral và xây dựng thương hiệu cá nhân."
-  ]}
-/>
-
-<InfiniteSlider
-  speed={0.9}
-  images={images}
-  direction="left"
-  title="Chụp ảnh"
-  description={[
-    "Dịch vụ chụp ảnh chuyên nghiệp, đa dạng phong cách.",
-    "Phù hợp với sự kiện, sản phẩm, chân dung và quảng cáo.",
-    "Đội ngũ nhiếp ảnh gia tận tâm, bắt trọn khoảnh khắc ấn tượng."
-  ]}
-/>
+      <InfiniteSlider
+        speed={0.9}
+        images={images}
+        direction="left"
+        title="Chụp ảnh"
+        description={[
+          " Chụp ảnh sản phẩm, chân dung, không gian... với bố cục và màu sắc phù hợp mục tiêu truyền thông",
+        ]}
+      />
 
       <PostProductionSection />
     </>
