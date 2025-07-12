@@ -2,7 +2,6 @@ import AboutCompany from "@/app/components/Home/About";
 import SlideGrid from "@/app/components/Home/Client";
 import HeroSection from "@/app/components/Home/HeroSection";
 import Project from "@/app/components/Home/Project";
-import Services from "@/app/components/Home/services";
 import BannerSlideFoot from "@/app/components/Slide/SlideFoot";
 export default function Home() {
   return (
@@ -16,9 +15,9 @@ export default function Home() {
       <div id="services">
         <Project />
       </div>
-      <div id="projects">
+      {/* <div id="projects">
         <Services />
-      </div>
+      </div> */}
       {/* <CollapsibleSectionPage /> */}
       <SlideGrid />
       <BannerSlideFoot />

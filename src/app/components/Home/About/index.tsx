@@ -85,8 +85,8 @@ export default function AboutCompany() {
               {/* Left Column - Bắt đầu */}
               <div className="space-y-8">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-px bg-gradient-to-r from-white to-transparent"></div>
-                  <h2 className="text-2xl md:text-3xl font-light tracking-wider text-white/95 uppercase">
+                  {/* <div className="w-12 h-px bg-gradient-to-r from-white to-transparent"></div> */}
+                  <h2 className="text-2xl md:text-3xl  font-bold tracking-wider text-white/95 uppercase">
                     Về chúng tôi
                   </h2>
                 </div>
@@ -105,23 +105,21 @@ export default function AboutCompany() {
                   />
                 </div>
 
-                <div className="flex justify-center mt-8">
+                <div className="mt-8 flex items-center justify-left">
                   <Link href="/about">
-                    <p className="group relative text-white cursor-pointer font-light tracking-wide flex items-center gap-2">
-                      <span className="text-orange-400 animate-bounce text-2xl">
-                        →
+                    <p className="text-white cursor-pointer font-light tracking-wide flex items-center gap-2">
+                      <span className="relative group inline-block transition-colors duration-300 text-white group-hover:text-orange-400 group-hover:drop-shadow-[0_0_5px_orange]">
+                        Chi tiết
+                        <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-80"></span>
                       </span>
-                      <span className="absolute left-0 bottom-0 w-full h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-50 animate-pulse"></span>
-                      Về chúng tôi
                     </p>
                   </Link>
                 </div>
               </div>
 
               {/* Right Column - Tầm nhìn */}
-              <div className="space-y-8 lg:mt-32">
+              <div className="space-y-8 ">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-px bg-gradient-to-r from-white to-transparent"></div>
                   <h2 className="text-2xl md:text-3xl font-light tracking-wider text-white/95 uppercase">
                     Tầm nhìn
                   </h2>
@@ -138,7 +136,7 @@ export default function AboutCompany() {
             </div>
 
             {/* Bottom Quote */}
-            <div className="text-center mt-32 mb-16">
+            {/* <div className="text-center mt-32 mb-16">
               <div className="max-w-4xl mx-auto">
                 <div className="text-4xl md:text-6xl font-extralight text-white/60 mb-8">
                   "
@@ -149,7 +147,7 @@ export default function AboutCompany() {
                 </p>
                 <div className="w-24 h-px bg-white/40 mx-auto mt-8"></div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

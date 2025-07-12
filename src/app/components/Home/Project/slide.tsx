@@ -131,7 +131,7 @@ const ProjectSlide = () => {
 
         <div className="relative z-10 overflow-hidden mb-28">
           <motion.div
-            className="flex md:flex-row flex-col justify-center items-center md:gap-4 gap-6 px-4  mx-auto md:overflow-x-auto pb-4"
+            className="flex md:flex-row flex-col justify-center items-center md:gap-8 gap-6 px-4  mx-auto md:overflow-x-auto pb-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
@@ -142,7 +142,7 @@ const ProjectSlide = () => {
                 key={card.img}
                 tabIndex={0}
                 aria-label={`Card ${card.title} by ${card.subtitle}`}
-                className="md:w-56 w-72 md:h-[500px] h-[500px] md:flex-shrink-0 rounded-xl overflow-hidden shadow-lg flex flex-col justify-end relative focus:outline-none focus:ring-2 focus:ring-white/50 transition-all cursor-pointer group"
+                className="md:w-[300px] w-72 md:h-[500px] h-[500px] md:flex-shrink-0 rounded-xl overflow-hidden shadow-lg flex flex-col justify-end relative focus:outline-none focus:ring-2 focus:ring-white/50 transition-all cursor-pointer group"
                 variants={cardVariants}
                 whileHover={{
                   scale: 1.05,

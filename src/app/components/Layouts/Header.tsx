@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Trang chủ", href: "/" },
   { name: "Về chúng tôi", href: "/about" },
   { name: "Dịch vụ", href: "/services" },
-  { name: "Dự án", href: "/projects" },
+  // { name: "Dự án", href: "/projects" },
 ];
 
 const Header = () => {
@@ -34,14 +34,17 @@ const Header = () => {
         if (section) {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.offsetHeight;
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
             foundSection = sections[i];
             break;
           }
         }
       }
-      
+
       setActiveSection(foundSection);
     };
 
@@ -67,9 +70,9 @@ const Header = () => {
       // On home page, use scroll spy logic
       const sectionMap: { [key: string]: string } = {
         "/": "home",
-        "/about": "about", 
+        "/about": "about",
         "/projects": "projects",
-        "/services": "services"
+        "/services": "services",
       };
       return sectionMap[href] === activeSection;
     } else {
@@ -106,7 +109,11 @@ const Header = () => {
                   className={`relative px-1 text-base font-medium transition-all duration-300
     outline-none focus:outline-none focus-visible:outline-none 
     focus:ring-2 focus:ring-gray-400 group
-    ${isActive ? "text-white font-bold" : "text-white hover:text-white hover:font-bold"}`}
+    ${
+      isActive
+        ? "text-white font-bold"
+        : "text-white hover:text-white hover:font-bold"
+    }`}
                   tabIndex={0}
                   aria-label={link.name}
                 >
