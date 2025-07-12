@@ -8,7 +8,7 @@ const CUSTOMER_LOGOS = [
   { src: "/customer/vinpearl-logo-inkythuatso-1-13-10-21-19.png" },
   { src: "/customer/logo-vinfast-inkythuatso-21-11-08-55.png" },
   { src: "/customer/FPT_logo_2010.svg.png" },
-  { src: "/customer/tai-logo-ngan-hang-vietcombank.png"  },
+  { src: "/customer/tai-logo-ngan-hang-vietcombank.png" },
   { src: "/customer/1349_Logo_mYi_cho_khYi_YYu_mYi.png" },
   { src: "/customer/Logo_MB_new.png" },
   { src: "/customer/Bamboo_Airways_Logo.svg.png" },
@@ -22,7 +22,7 @@ const CUSTOMER_LOGOS = [
   { src: "/customer/vinpearl-logo-inkythuatso-1-13-10-21-19.png" },
   { src: "/customer/logo-vinfast-inkythuatso-21-11-08-55.png" },
   { src: "/customer/FPT_logo_2010.svg.png" },
-  { src: "/customer/tai-logo-ngan-hang-vietcombank.png"  },
+  { src: "/customer/tai-logo-ngan-hang-vietcombank.png" },
   { src: "/customer/1349_Logo_mYi_cho_khYi_YYu_mYi.png" },
   { src: "/customer/Logo_MB_new.png" },
   { src: "/customer/Bamboo_Airways_Logo.svg.png" },
@@ -49,7 +49,7 @@ const BrandLogo = ({
     whileTap={{ scale: 0.95 }}
     className="flex items-center justify-center py-2 transition-all duration-300"
   >
-    <div className="relative w-16 h-16">
+    <div className="relative w-[70px] h-[70px]">
       <Image
         src={src}
         alt={alt}
@@ -68,7 +68,7 @@ const BrandLogo = ({
 const SlideGrid = () => {
   return (
     <>
-      <div className="text-center w-full pb-8 mt-36">
+      <div className="text-center w-full pb-8 mt-20">
         <p className="text-white text-4xl font-bold bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent drop-shadow-md transform transition-all hover:scale-105 duration-300">
           Khách hàng
         </p>

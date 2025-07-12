@@ -30,7 +30,7 @@ const VideoBanner = () => {
           muted
           playsInline
         >
-          <source src="/105296-669669130_medium.mp4" type="video/mp4" />
+          <source src="/videos/aboutus.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
