@@ -1,5 +1,15 @@
 @import "tailwindcss";
 /* @import "tw-animate-css"; */
+@layer components {
+  .framer-text {
+    @apply font-[300] text-[36px] leading-[1.2em] text-white/50 tracking-[-0.08em] text-justify;
+    font-family: 'Inter', 'Inter Placeholder', sans-serif;
+  }
+
+  .framer-text-dark {
+    @apply text-white/80;
+  }
+}
 
 @custom-variant dark (&:is(.dark *));
 

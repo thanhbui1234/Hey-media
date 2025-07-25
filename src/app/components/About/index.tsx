@@ -20,7 +20,7 @@ const BannerAbout = () => {
     >
       <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
         <video
-          src="/videos/aboutus.mp4"
+          src="/videos/VIDEO NỀN.mp4"
           autoPlay
           loop
           muted

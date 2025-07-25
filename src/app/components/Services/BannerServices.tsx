@@ -20,7 +20,7 @@ const BannerServices = () => {
     >
       <motion.div className="absolute inset-0">
         <video
-          src="/videos/video2.mp4"
+          src="/videos/VIDEO NỀN.mp4"
           autoPlay
           loop
           muted

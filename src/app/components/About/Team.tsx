@@ -1,46 +1,33 @@
 "use client";
 
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FaFacebook } from "react-icons/fa";
 
 const teamMembers = [
   {
-    name: "Nguyễn Vĩnh Duy",
-    role: "Founder & Creative Producer",
-    image: "/vip1.JPG",
-    facebook: "https://facebook.com/duy",
+    name: "Đỗ Hồng Sơn",
+    role: "Director of Photography",
+    image: "/teams/Đỗ Hồng Sơn - Director of Photography.jpg",
   },
   {
-    name: "Tú Nguyễn",
-    role: "Founder & Executive Producer",
-    image: "/vip2.jpg",
-    facebook: "https://facebook.com/tu",
+    name: "Nguyễn Hữu Bảo Nhân",
+    role: "Camera Operator",
+    image: "/teams/Nguyễn Hữu Bảo Nhân - Camera Operator.jpg",
   },
   {
-    name: "Thái Hà",
-    role: "Partner & Executive Producer",
-    image: "/vip3.webp",
-    facebook: "https://facebook.com/ha",
+    name: "Quang Khải",
+    role: "Producer",
+    image: "/teams/Quang Khải - Producer.jpg",
   },
   {
-    name: "Kiên Nguyễn",
-    role: "Partner & Executive Producer",
-    image: "/vip5.webp",
-    facebook: "https://facebook.com/kien",
+    name: "Việt Hoàng",
+    role: "Assistant Director",
+    image: "/teams/Việt Hoàng - Assistant Director.jpg",
   },
   {
-    name: "Kiên Nguyễn",
-    role: "Partner & Executive Producer",
-    image: "/vip5.webp",
-    facebook: "https://facebook.com/kien",
-  },
-  {
-    name: "Kiên Nguyễn",
-    role: "Partner & Executive Producer",
-    image: "/vip5.webp",
-    facebook: "https://facebook.com/kien",
+    name: "Vương Minh Tuấn",
+    role: "Director",
+    image: "/teams/Vương Minh Tuấn - Director.jpg",
   },
 ];
 
@@ -56,19 +43,12 @@ const overlayVariants = {
 
 const Team = () => {
   return (
-    <div className="space-y-12 mt-10 px-6 py-12 bg-gradient-to-br from-white via-gray-50 to-gray-100">
-      <div className="text-center">
-        <TextGenerateEffect
-          words="Peek Behind the Curtain: Meet Our Fantastic Team!"
-          className="text-4xl md:text-5xl font-bold text-gray-800"
-        />
-      </div>
-
+    <div className="space-y-12 mt-10 px-6 py-12 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
         {teamMembers.map((member, idx) => (
           <motion.div
             key={member.name}
-            className="relative bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary group transition-all"
+            className="relative bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-700/80 rounded-3xl overflow-hidden border border-gray-700 shadow-xl focus:outline-none focus:ring-2 focus:ring-primary group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-white/30"
             tabIndex={0}
             aria-label={`Team member: ${member.name}`}
             initial="rest"
@@ -76,11 +56,7 @@ const Team = () => {
             whileFocus="hover"
             animate="rest"
             variants={cardVariants}
-            onClick={() => window.open(member.facebook, "_blank")}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ")
-                window.open(member.facebook, "_blank");
-            }}
+            // Xoá logic Facebook
           >
             <div className="relative w-full aspect-[4/5]">
               <div className="relative w-full h-full">
@@ -88,35 +64,19 @@ const Team = () => {
                   src={member.image}
                   alt={member.name}
                   fill
-                  className="object-cover object-top rounded-t-2xl"
+                  className="object-cover object-top rounded-t-3xl"
                   sizes="(max-width: 768px) 100vw, 33vw"
                   priority={idx < 2}
                 />
-                <motion.div
-                  variants={overlayVariants}
-                  className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity"
-                >
-                  <button
-                    className="flex items-center gap-2 px-4 py-2 bg-white/90 text-black rounded-full border border-gray-300 hover:bg-gray-200 focus:outline-none"
-                    aria-label={`Open ${member.name}'s Facebook`}
-                    tabIndex={-1}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open(member.facebook, "_blank");
-                    }}
-                  >
-                    <FaFacebook className="w-5 h-5" />
-                    <span className="text-sm font-medium">Facebook</span>
-                  </button>
-                </motion.div>
+                {/* Xoá overlay Facebook */}
               </div>
             </div>
 
-            <div className="p-4 text-center bg-white rounded-b-2xl">
-              <div className="text-lg font-semibold text-gray-800 mb-1">
+            <div className="p-5 text-center bg-gradient-to-t from-gray-900/80 via-gray-800/80 to-transparent rounded-b-3xl">
+              <div className="text-xl font-bold text-white mb-1 drop-shadow-lg tracking-wide">
                 {member.name}
               </div>
-              <div className="text-sm text-gray-500 tracking-wide uppercase">
+              <div className="text-xs text-gray-300 tracking-widest uppercase font-medium">
                 {member.role}
               </div>
             </div>

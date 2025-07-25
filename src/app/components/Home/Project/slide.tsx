@@ -10,35 +10,35 @@ const cardData = [
     title: "TVC",
     subtitle: "MB BANK",
     youtubeId: "qjNOy80MyTc",
-    video: "/videos/video1.mp4",
+    video: "/videos/VIDEO DOC TVC.mp4",
   },
   {
     img: "/services/Phim doanh nghiệp.png",
-    title: "Phim Doanh Nghiệp",
+    title: "PHIM DOANH NGHIỆP",
     subtitle: "ĐEN",
     youtubeId: "26ozVYUZMcY",
-    video: "/videos/video2.mp4",
+    video: "/videos/VIDEO DOC PDN.mp4",
   },
   {
     img: "/services/TikTok.png",
-    title: "TikTok",
+    title: "TIKTOK",
     subtitle: "ARTIST 3",
     youtubeId: "mngtcfcaVrI",
-    video: "/videos/video3.mp4",
+    video: "/videos/VIDEO DOC TIKTOKmp4.mp4",
   },
   {
     img: "/services/Chụp ảnh1.png",
-    title: "Chụp ảnh",
+    title: "CHỤP ẢNH",
     subtitle: "ARTIST 4",
     youtubeId: "VR8ooa3G_5M",
-    video: "/videos/video4.mp4",
+    video: "",
   },
   {
     img: "/services/Livestream.jpg",
-    title: "Livestream/sự kiện",
+    title: "LIVESTREAM/SỰ KIỆN",
     subtitle: "ARTIST 5",
     youtubeId: "VR8ooa3G_5M",
-    video: "/videos/video5.mp4",
+    video: "/videos/VIDEO DOC EVENT TIKTOK.mp4",
   },
 ];
 
@@ -165,7 +165,7 @@ const ProjectSlide = () => {
                   }}
                 />
 
-                {hoveredIndex === idx ? (
+                {hoveredIndex === idx && card.video ? (
                   <video
                     src={card.video}
                     autoPlay

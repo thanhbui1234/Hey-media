@@ -26,7 +26,7 @@ const HeroSection = () => {
 
   return (
     <div ref={ref} className="relative w-full h-[250vh]">
-      <section className="sticky top-0 h-screen w-full overflow-hidden bg-black">
+      <section className="sticky top-0 h-screen w-full overflow-hidden ">
         {/* Banner layer */}
         <motion.div
           className="absolute inset-0 z-10"
