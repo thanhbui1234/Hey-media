@@ -23,7 +23,7 @@ function VideoModal({
   const modalVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
-  const hideControlsTimeoutRef = useRef<NodeJS.Timeout>();
+  const hideControlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isOpen && modalVideoRef.current) {
