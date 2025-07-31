@@ -1,7 +1,8 @@
 "use client";
 
-import ButtonCustom from "@/components/ui/ButtonCustom";
+import ButtonCustom2 from "@/components/ui/ButtonCustom2";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import {
   FaCamera,
@@ -78,16 +79,13 @@ const Footer = () => {
             className="flex items-center justify-center gap-4 mb-8"
             variants={itemVariants}
           >
-            <motion.div
-              className="flex items-center gap-2"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              <FaFilm className="text-5xl text-white" />
-            </motion.div>
-            <h2 className="text-5xl md:text-6xl font-black tracking-wider bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
-              HEY MEDIA
-            </h2>
+            <Image
+              src="/123.png"
+              alt="Logo"
+              width={70}
+              height={70}
+              className="w-[100px] h-[70px]"
+            />
           </motion.div>
 
           <motion.p
@@ -118,8 +116,7 @@ const Footer = () => {
 
           <motion.div variants={itemVariants}>
             <Link href="/contact">
-                          <ButtonCustom
-              className="cursor-pointer text-lg px-8 py-4 bg-white hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 text-black border border-gray-200"
+                          <ButtonCustom2
               text="Bắt đầu hợp tác"
             />
             </Link>
@@ -172,9 +169,8 @@ const Footer = () => {
             <ul className="space-y-4">
               {[
                 { name: "Trang chủ", href: "/" },
-                { name: "Dự án", href: "/projects" },
-                { name: "Dịch vụ", href: "/services" },
                 { name: "Về chúng tôi", href: "/about" },
+                { name: "Dịch vụ", href: "/services" },
                 { name: "Liên hệ", href: "/contact" },
               ].map((item, idx) => (
                 <motion.li

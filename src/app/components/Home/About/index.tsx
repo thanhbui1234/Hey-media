@@ -32,7 +32,7 @@ export default function AboutCompany() {
         <img
           src="/img/Media.png"
           alt="About"
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          className="absolute top-0 left-0 w-full h-full opacity-[40%] object-cover z-0"
         />
 
         {/* Clean Background Text - Very Subtle */}
@@ -63,14 +63,14 @@ export default function AboutCompany() {
                 <div className="space-y-6">
                   <TextGenerateEffect
                     words="Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân."
-                    className="framer-text"
+                    className="framer-text text-gray-300"
                   />
 
                   <div className="w-8 h-px bg-white/40 my-6"></div>
 
                   <TextGenerateEffect
                     words="Với đội ngũ trẻ, am hiểu xu hướng truyền thông và tư duy sáng tạo linh hoạt, chúng tôi luôn mang đến những sản phẩm chỉn chu, chất lượng, đáp ứng yêu cầu của khách hàng. Hey Media luôn sẵn sàng đồng hành cùng khách hàng trong hành trình xây dựng hình ảnh, lan tỏa thông điệp và tạo dấu ấn thương hiệu bằng những sản phẩm truyền thông ấn tượng, hiệu quả."
-                    className="framer-text"
+                    className="framer-text text-gray-300"
                   />
                 </div>
 
@@ -79,7 +79,7 @@ export default function AboutCompany() {
                     href="/about"
                     className="text-white cursor-pointer font-light tracking-wide flex items-center gap-2"
                   >
-                    <span className="relative group inline-block transition-colors duration-300 text-white group-hover:text-orange-400 group-hover:drop-shadow-[0_0_5px_orange]">
+                    <span className="relative group inline-block transition-colors duration-300 text-white group-hover:text-orange-400 group-hover:drop-shadow-[0_0_5px_orange] text-5xl">
                       Chi tiết
                       <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-80"></span>
                     </span>
@@ -89,18 +89,12 @@ export default function AboutCompany() {
 
               {/* Right Column - Tầm nhìn */}
               <div className="space-y-8">
-                <div className="flex items-center gap-4 mb-8">
-                  <h2 className="text-2xl md:text-3xl font-light tracking-wider text-white/95 uppercase">
-                    Tầm nhìn
-                  </h2>
-                </div>
-
                 <img
                   src="/teams/MT1.jpg"
                   alt="About"
-                  width={600}
-                  height={600}
-                  className="rounded-lg"
+                  width={900}
+                  height={900}
+                  className="rounded-lg w-[700px] h-[700px] max-w-none"
                 />
               </div>
             </div>

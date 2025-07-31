@@ -1,19 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
 const VideoBanner = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.log("Auto-play was prevented:", error);
-      });
-    }
-  }, []);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -22,17 +11,11 @@ const VideoBanner = () => {
       className="relative w-full flex justify-center items-center"
     >
       <div className="w-full max-w-[1500px] aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
-        <video
-          ref={videoRef}
+        <img
+          src="nenshoe.png"
+          alt="About us banner"
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/videos/aboutus.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        />
       </div>
     </motion.div>
   );

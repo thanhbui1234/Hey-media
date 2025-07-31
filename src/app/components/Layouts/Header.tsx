@@ -1,8 +1,8 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaFilm } from "react-icons/fa";
 import { IoClose, IoMenu } from "react-icons/io5";
 
 const navLinks = [
@@ -94,8 +94,13 @@ const Header = () => {
           tabIndex={0}
           aria-label="Go to homepage"
         >
-          <FaFilm className="text-2xl" aria-hidden="true" />
-          <span className="tracking-widest">Hey Media</span>
+          <Image
+            src="/123.png"
+            alt="Logo"
+            width={70}
+            height={70}
+            className="w-full h-full"
+          />
         </Link>
 
         {/* Desktop Nav Links */}
