@@ -10,21 +10,21 @@ const cardData = [
     title: "TVC",
     subtitle: "MB BANK",
     youtubeId: "qjNOy80MyTc",
-    video: "/videos/VIDEO DOC TVC.mp4",
+    video: "/videos/VIDEO_DOC_TVC.mp4",
   },
   {
     img: "/services/Phim doanh nghiệp.png",
     title: "PHIM DOANH NGHIỆP",
     subtitle: "ĐEN",
     youtubeId: "26ozVYUZMcY",
-    video: "/videos/VIDEO DOC PDN.mp4",
+    video: "/videos/VIDEO_DOC_PDN.mp4",
   },
   {
     img: "/services/TikTok.png",
     title: "TIKTOK",
     subtitle: "ARTIST 3",
     youtubeId: "mngtcfcaVrI",
-    video: "/videos/VIDEO DOC TIKTOKmp4.mp4",
+    video: "/videos/VIDEO_DOC_TIKTOKmp4.mp4",
   },
   {
     img: "/services/Chụp ảnh1.png",
@@ -38,7 +38,7 @@ const cardData = [
     title: "LIVESTREAM/SỰ KIỆN",
     subtitle: "ARTIST 5",
     youtubeId: "VR8ooa3G_5M",
-    video: "/videos/VIDEO DOC EVENT TIKTOK.mp4",
+    video: "/videos/VIDEO_DOC_EVENT_TIKTOK.mp4",
   },
 ];
 
