@@ -1,7 +1,7 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // ... existing code ...
 const cardData = [
@@ -69,36 +69,68 @@ const cardVariants: Variants = {
 
 const ProjectSlide = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [loadingVideos, setLoadingVideos] = useState<Set<number>>(new Set());
+  const [cachedVideos, setCachedVideos] = useState<Set<number>>(new Set());
   const router = useRouter();
-  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const videoBlobsRef = useRef<Map<number, string>>(new Map());
 
-  const handleOpenModal = useCallback((youtubeId: string) => {
-    // This function is no longer used for modal, but kept for now
-    // setActiveYoutubeId(youtubeId);
-    // setIsModalOpen(true);
-  }, []);
-
-  const handleCloseModal = useCallback(() => {
-    // setIsModalOpen(false);
-    // setActiveYoutubeId(null);
-  }, []);
-
-  // Close modal on ESC
+  // Cleanup blob URLs on unmount
   useEffect(() => {
-    // if (!isModalOpen) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // if (e.key === "Escape") handleCloseModal();
+    return () => {
+      videoBlobsRef.current.forEach(blobUrl => {
+        URL.revokeObjectURL(blobUrl);
+      });
+      videoBlobsRef.current.clear();
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []); // Removed isModalOpen dependency
+  }, []);
 
-  // Focus trap for modal
-  useEffect(() => {
-    // if (isModalOpen && closeBtnRef.current) {
-    //   closeBtnRef.current.focus();
-    // }
-  }, []); // Removed isModalOpen dependency
+  // Load video on first hover
+  const handleVideoLoad = async (cardIndex: number, videoSrc: string) => {
+    // If already cached, return early
+    if (cachedVideos.has(cardIndex)) {
+      console.log(`Video ${cardIndex} already cached`);
+      return;
+    }
+
+    // If currently loading, don't start another load
+    if (loadingVideos.has(cardIndex)) {
+      console.log(`Video ${cardIndex} already loading`);
+      return;
+    }
+
+    console.log(`Starting to load video ${cardIndex}`);
+    setLoadingVideos(prev => new Set([...prev, cardIndex]));
+
+    try {
+      const response = await fetch(videoSrc);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      
+      // Cache the blob URL
+      videoBlobsRef.current.set(cardIndex, blobUrl);
+      setCachedVideos(prev => new Set([...prev, cardIndex]));
+      
+      console.log(`Video ${cardIndex} cached successfully`);
+    } catch (error) {
+      console.warn(`Failed to load video ${cardIndex}:`, error);
+    } finally {
+      setLoadingVideos(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(cardIndex);
+        return newSet;
+      });
+    }
+  };
+
+  const handleMouseEnter = (idx: number) => {
+    setHoveredIndex(idx);
+    const card = cardData[idx];
+    
+    // Load video if it has one and isn't cached yet
+    if (card.video && !cachedVideos.has(idx)) {
+      handleVideoLoad(idx, card.video);
+    }
+  };
 
   return (
     <>
@@ -149,7 +181,7 @@ const ProjectSlide = () => {
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.7)",
                   zIndex: 20,
                 }}
-                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseEnter={() => handleMouseEnter(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity z-10" />
@@ -165,16 +197,42 @@ const ProjectSlide = () => {
                   }}
                 />
 
+                {/* Video/Image Display Logic */}
                 {hoveredIndex === idx && card.video ? (
-                  <video
-                    src={card.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ objectFit: "cover" }}
-                  />
+                  <>
+                    {loadingVideos.has(idx) ? (
+                      // Loading state
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-15">
+                        <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <p className="text-white text-sm mt-2">Loading video...</p>
+                      </div>
+                    ) : cachedVideos.has(idx) ? (
+                      // Cached video
+                      <video
+                        src={videoBlobsRef.current.get(idx)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                        style={{ objectFit: "cover" }}
+                        onLoadStart={() => console.log(`Video ${idx} started loading`)}
+                        onCanPlay={() => console.log(`Video ${idx} can play`)}
+                      />
+                    ) : null}
+                    
+                    {/* Always show image as fallback */}
+                    <Image
+                      src={card.img}
+                      alt={card.title}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      className={`absolute inset-0 w-full h-[600px !important] object-cover transition-transform duration-700 group-hover:scale-110 transition-opacity duration-300 ${
+                        cachedVideos.has(idx) && !loadingVideos.has(idx) ? 'opacity-0' : 'opacity-100'
+                      }`}
+                      priority={idx === 0}
+                    />
+                  </>
                 ) : (
                   <Image
                     src={card.img}
