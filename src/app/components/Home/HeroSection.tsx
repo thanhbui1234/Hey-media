@@ -1,9 +1,13 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import dynamic from 'next/dynamic';
 import { useRef } from "react";
-import Banner from "./Banner";
-import VideoBanner from "./Banner/VideoBanner";
+
+const Banner = dynamic(() => import("./Banner"), { ssr: false , loading: () => {    console.log("⏳ [dynamic] Đang hiển thị loading fallback...");
+    return <div>Loading...</div>} } );
+const VideoBanner = dynamic(() => import("./Banner/VideoBanner"), { ssr: false , loading: () => {    console.log("⏳ [dynamic] Đang hiển thị loading fallback...");
+    return <div>Loading...</div>} });
 
 const HeroSection = () => {
   const ref = useRef(null);
@@ -15,10 +19,6 @@ const HeroSection = () => {
   // Banner hiệu ứng fade và scale nhẹ khi scroll
   const bannerScale = useTransform(scrollYProgress, [0, 0.4], [1, 0.95]);
   const bannerOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
-
-  // Text “SHOWREEL” di chuyển lên và mờ dần
-  const textY = useTransform(scrollYProgress, [0, 0.3], ["0%", "-100%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   // Video xuất hiện dần ở phần cuối Hero section
   const videoY = useTransform(scrollYProgress, [0.5, 0.7], ["50%", "0%"]);
