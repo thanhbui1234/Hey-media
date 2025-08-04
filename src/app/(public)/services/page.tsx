@@ -2,8 +2,8 @@
 
 import BannerServices from "@/app/components/Services/BannerServices";
 import InfiniteSlider from "@/app/components/Services/Suppoort";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, Suspense } from "react";
 
 const videos = [
   "/videos/video1.mp4",
@@ -14,8 +14,7 @@ const videos = [
   "/videos/aboutus.mp4",
 ];
 
-const Services = () => {
-  const router = useRouter();
+const ServicesContent = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -101,6 +100,14 @@ const Services = () => {
       </div>
       {/* <PostProductionSection /> */}
     </>
+  );
+};
+
+const Services = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ServicesContent />
+    </Suspense>
   );
 };
 
