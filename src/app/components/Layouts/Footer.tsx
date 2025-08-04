@@ -80,11 +80,11 @@ const Footer = () => {
             variants={itemVariants}
           >
             <Image
-              src="/123.png"
+              src="/logotrang.png"
               alt="Logo"
               width={70}
               height={70}
-              className="w-[100px] h-[70px]"
+              className="w-[150px] h-[100px]"
             />
           </motion.div>
 

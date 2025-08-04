@@ -70,7 +70,7 @@ const SlideGrid = () => {
     <>
       <div className="text-center w-full pb-8 mt-20">
         <p className="text-white text-4xl font-bold bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent drop-shadow-md transform transition-all hover:scale-105 duration-300">
-          Khách hàng
+          KHÁCH HÀNG
         </p>
       </div>
 

@@ -8,37 +8,37 @@ const cardData = [
   {
     img: "/services/TVC.png",
     title: "TVC",
-    subtitle: "MB BANK",
     youtubeId: "qjNOy80MyTc",
     video: "/videos/VIDEO_DOC_TVC.mp4",
+    serviceId: "tvc",
   },
   {
     img: "/services/Phim doanh nghiệp.png",
     title: "PHIM DOANH NGHIỆP",
-    subtitle: "ĐEN",
     youtubeId: "26ozVYUZMcY",
     video: "/videos/VIDEO_DOC_PDN.mp4",
+    serviceId: "phim-doanh-nghiep",
   },
   {
     img: "/services/TikTok.png",
     title: "TIKTOK",
-    subtitle: "ARTIST 3",
     youtubeId: "mngtcfcaVrI",
     video: "/videos/VIDEO_DOC_TIKTOKmp4.mp4",
+    serviceId: "tiktok",
   },
   {
     img: "/services/Chụp ảnh1.png",
     title: "CHỤP ẢNH",
-    subtitle: "ARTIST 4",
     youtubeId: "VR8ooa3G_5M",
     video: "",
+    serviceId: "chup-anh",
   },
   {
     img: "/services/Livestream.jpg",
     title: "LIVESTREAM/SỰ KIỆN",
-    subtitle: "ARTIST 5",
     youtubeId: "VR8ooa3G_5M",
     video: "/videos/VIDEO_DOC_EVENT_TIKTOK.mp4",
+    serviceId: "livestream-su-kien",
   },
 ];
 
@@ -150,7 +150,7 @@ const ProjectSlide = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            Dịch vụ
+            DỊCH VỤ
           </motion.h2>
           <motion.div
             className="h-1 w-24 bg-white/50 mx-auto mt-2 rounded-full"
@@ -173,7 +173,7 @@ const ProjectSlide = () => {
               <motion.div
                 key={card.img}
                 tabIndex={0}
-                aria-label={`Card ${card.title} by ${card.subtitle}`}
+                aria-label={`Card ${card.title}`}
                 className="md:flex-1 md:max-w-[280px] md:min-w-[200px] w-72 md:h-[400px] h-[500px] rounded-xl overflow-hidden shadow-lg flex flex-col justify-end relative focus:outline-none focus:ring-2 focus:ring-white/50 transition-all cursor-pointer group"
                 variants={cardVariants}
                 whileHover={{
@@ -262,20 +262,12 @@ const ProjectSlide = () => {
                     whileHover={{ opacity: 1 }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      router.push(`/services`);
+                      router.push(`/services?section=${card.serviceId}`);
                     }}
                   >
                     {card.title}
                   </motion.div>
-                  <div
-                    className="text-white/80 text-sm group-hover:text-white/90 transition-colors cursor-pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      router.push(`/services`);
-                    }}
-                  >
-                    {card.subtitle}
-                  </div>
+                 
                 </div>
               </motion.div>
             ))}

@@ -61,17 +61,15 @@ export default function AboutCompany() {
                 </div>
 
                 <div className="space-y-6">
-                  <TextGenerateEffect
-                    words="Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân."
+                  <p  
                     className="framer-text text-gray-300"
-                  />
+                  >Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân.</p>
 
                   <div className="w-8 h-px bg-white/40 my-6"></div>
 
-                  <TextGenerateEffect
-                    words="Với đội ngũ trẻ, am hiểu xu hướng truyền thông và tư duy sáng tạo linh hoạt, chúng tôi luôn mang đến những sản phẩm chỉn chu, chất lượng, đáp ứng yêu cầu của khách hàng. Hey Media luôn sẵn sàng đồng hành cùng khách hàng trong hành trình xây dựng hình ảnh, lan tỏa thông điệp và tạo dấu ấn thương hiệu bằng những sản phẩm truyền thông ấn tượng, hiệu quả."
+                  <p  
                     className="framer-text text-gray-300"
-                  />
+                  >Với đội ngũ trẻ, am hiểu xu hướng truyền thông và tư duy sáng tạo linh hoạt, chúng tôi luôn mang đến những sản phẩm chỉn chu, chất lượng, đáp ứng yêu cầu của khách hàng. Hey Media luôn sẵn sàng đồng hành cùng khách hàng trong hành trình xây dựng hình ảnh, lan tỏa thông điệp và tạo dấu ấn thương hiệu bằng những sản phẩm truyền thông ấn tượng, hiệu quả.</p>
                 </div>
 
                 <div className="mt-8 flex items-center justify-left">
@@ -79,7 +77,7 @@ export default function AboutCompany() {
                     href="/about"
                     className="text-white cursor-pointer font-light tracking-wide flex items-center gap-2"
                   >
-                    <span className="relative group inline-block transition-colors duration-300 text-white group-hover:text-orange-400 group-hover:drop-shadow-[0_0_5px_orange] text-5xl">
+                    <span className="relative group inline-block transition-colors duration-300 text-white group-hover:text-orange-400 group-hover:drop-shadow-[0_0_5px_orange] text-3xl">
                       Chi tiết
                       <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-80"></span>
                     </span>

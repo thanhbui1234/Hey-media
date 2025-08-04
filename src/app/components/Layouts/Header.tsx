@@ -95,10 +95,10 @@ const Header = () => {
           aria-label="Go to homepage"
         >
           <Image
-            src="/123.png"
+            src="/logotrang.png"
             alt="Logo"
-            width={70}
-            height={70}
+            width={63}
+            height={63}
             className="w-full h-full"
           />
         </Link>
