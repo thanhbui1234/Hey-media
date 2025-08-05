@@ -62,13 +62,13 @@ export default function AboutCompany() {
 
                 <div className="space-y-6">
                   <p  
-                    className="framer-text text-gray-300"
+                    className="framer-text text-3xl text-gray-300 "
                   >Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân.</p>
 
                   <div className="w-8 h-px bg-white/40 my-6"></div>
 
                   <p  
-                    className="framer-text text-gray-300"
+                    className="framer-text text-3xl text-gray-300"
                   >Với đội ngũ trẻ, am hiểu xu hướng truyền thông và tư duy sáng tạo linh hoạt, chúng tôi luôn mang đến những sản phẩm chỉn chu, chất lượng, đáp ứng yêu cầu của khách hàng. Hey Media luôn sẵn sàng đồng hành cùng khách hàng trong hành trình xây dựng hình ảnh, lan tỏa thông điệp và tạo dấu ấn thương hiệu bằng những sản phẩm truyền thông ấn tượng, hiệu quả.</p>
                 </div>
 
