@@ -99,7 +99,7 @@ const Header = () => {
             alt="Logo"
             width={63}
             height={63}
-            className="w-full h-full"
+            className="h-full ml-10 w-[70px]"
           />
         </Link>
 
