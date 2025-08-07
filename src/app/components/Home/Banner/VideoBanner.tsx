@@ -10,7 +10,7 @@ const VideoBanner = () => {
       transition={{ duration: 0.8 }}
       className="relative w-full flex justify-center items-center"
     >
-      <div className="w-full max-w-[1500px] aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
+      <div className="w-full aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
         <img
           src="nenshoe.png"
           alt="About us banner"

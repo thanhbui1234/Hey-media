@@ -11,8 +11,7 @@ import {
   FaFilm,
   FaInstagram,
   FaLinkedinIn,
-  FaPlay,
-  FaVimeoV,
+  FaPlay
 } from "react-icons/fa";
 
 const containerVariants = {
@@ -135,9 +134,7 @@ const Footer = () => {
           <motion.div variants={itemVariants} className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-6 text-white">Studio</h3>
             <p className="text-gray-300 text-base leading-relaxed mb-6">
-              Hey Media là studio sáng tạo chuyên về sản xuất video, nhiếp ảnh
-              và các dịch vụ media marketing. Chúng tôi mang đến những giải pháp
-              sáng tạo và chuyên nghiệp cho thương hiệu của bạn.
+             Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân.
             </p>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="p-4 bg-white/5 rounded-lg backdrop-blur-sm">
@@ -200,7 +197,6 @@ const Footer = () => {
               {[
                 { Icon: FaFacebookF, name: "Facebook", color: "#1877F2" },
                 { Icon: FaInstagram, name: "Instagram", color: "#E4405F" },
-                { Icon: FaVimeoV, name: "Vimeo", color: "#1AB7EA" },
                 { Icon: FaLinkedinIn, name: "LinkedIn", color: "#0A66C2" },
               ].map(({ Icon, name, color }) => (
                 <motion.a
@@ -242,20 +238,6 @@ const Footer = () => {
                 © {new Date().getFullYear()} Hey Media Studio. All rights
                 reserved.
               </span>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-gray-400">
-              <Link
-                href="/privacy"
-                className="hover:text-gray-200 transition-colors"
-              >
-                Chính sách bảo mật
-              </Link>
-              <Link
-                href="/terms"
-                className="hover:text-gray-200 transition-colors"
-              >
-                Điều khoản sử dụng
-              </Link>
             </div>
           </div>
         </motion.div>

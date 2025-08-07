@@ -49,7 +49,7 @@ const HeroSection = () => {
           className="absolute inset-0 z-30 flex items-center justify-center"
           style={{ y: videoY, opacity: videoOpacity }}
         >
-          <div className="w-full max-w-[1500px] h-[200px] mx-auto flex items-center justify-center">
+          <div className="w-full h-[200px] mx-auto flex items-center justify-center">
             <VideoBanner />
           </div>
         </motion.div>

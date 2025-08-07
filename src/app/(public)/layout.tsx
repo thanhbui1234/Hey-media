@@ -2,7 +2,6 @@
 import Header from "@/app/components/Layouts/Header";
 import { Toaster } from "sonner";
 import Footer from "../components/Layouts/Footer";
-import SlideFoot from "../components/Layouts/SlideFoot";
 export default function PublicLayout({
   children,
 }: {
@@ -17,7 +16,7 @@ export default function PublicLayout({
       <Toaster richColors position="top-center" />
       <main className="">{children}</main>
 
-      <SlideFoot />
+      {/* <SlideFoot /> */}
 
       {/* Footer */}
       <Footer />

@@ -32,7 +32,7 @@ export default function AboutCompany() {
         <img
           src="/img/Media.png"
           alt="About"
-          className="absolute top-0 left-0 w-full h-full opacity-[40%] object-cover z-0"
+          className="absolute top-0 left-0 w-full h-full opacity-[20%] object-cover z-0"
         />
 
         {/* Clean Background Text - Very Subtle */}

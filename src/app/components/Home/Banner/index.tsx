@@ -32,9 +32,7 @@ const Banner = () => {
             <h1 className="text-4xl md:text-7xl font-bold text-white mb-4">
               Have Client is Joy
             </h1>
-            <p className="text-lg md:text-2xl text-white/90 max-w-2xl mx-auto px-4">
-              Bắt sóng thời đại – Dẫn lối truyền thông.
-            </p>
+         
           </div>
         </div>
       </div>

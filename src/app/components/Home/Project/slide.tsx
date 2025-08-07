@@ -181,6 +181,10 @@ const ProjectSlide = () => {
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.7)",
                   zIndex: 20,
                 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  router.push(`/services?section=${card.serviceId}`);
+                }}
                 onMouseEnter={() => handleMouseEnter(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >

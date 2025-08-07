@@ -148,7 +148,7 @@ const BannerSlideFoot = () => {
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                   >
                     <motion.p
-                      className="text-white text-xl lg:text-2xl xl:text-3xl font-medium text-center leading-relaxed max-w-3xl"
+                      className="text-white text-xl lg:text-xl xl:text-2xl font-medium text-center leading-relaxed max-w-3xl"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2, duration: 0.4 }}
