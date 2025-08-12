@@ -54,8 +54,7 @@ const BannerContact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
           >
-            Chúng tôi là một studio sáng tạo biến ý tưởng của bạn thành nội dung
-            trực quan tuyệt đẹp với thiết kế táo bạo và hoạt hình mượt mà.
+            Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân.
           </motion.p>
         </motion.div>
 

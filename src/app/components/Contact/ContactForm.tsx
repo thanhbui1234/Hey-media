@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,10 +13,10 @@ const SERVICE_ID = "service_czvxv2d";
 const TEMPLATE_ID = "template_7yvjaxf"; // ⚠️ Thay bằng template ID thực tế const PUBLIC_KEY = "NYWVXs7DTaTJRO95o"; // ⚠️ Thay bằng public key
 const PUBLIC_KEY = "NYWVXs7DTaTJRO95o"; // ⚠️ Thay bằng public key
 const formSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  phone: z.string().min(6, "Phone is required"),
-  email: z.string().email("Invalid email"),
-  message: z.string().min(10, "Message too short"),
+  name: z.string().min(2, "Tên không được bỏ trống"),
+  phone: z.string().min(6, "Số điện thoại không được bỏ trống"),
+  email: z.string().email("Email không hợp lệ"),
+  message: z.string().min(10, "Tin nhắn quá ngắn"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -40,7 +39,7 @@ export default function ContactForm() {
 
     try {
       await emailjs.send(SERVICE_ID, TEMPLATE_ID, payload, PUBLIC_KEY);
-      toast.success("🎉 Message sent successfully!");
+      toast.success("🎉 Gửi tin nhắn thành công!");
       reset();
     } catch (err) {
       toast.error("❌ Failed to send. Please try again.");
@@ -60,14 +59,14 @@ export default function ContactForm() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        Let’s get in touch
+        Liện hệ
       </motion.h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {[
-          { name: "name", placeholder: "Your name", label: "Name" },
-          { name: "phone", placeholder: "Phone number", label: "Phone" },
-          { name: "email", placeholder: "Email address", label: "Email" },
+          { name: "name", placeholder: "Tên", label: "Name" },
+          { name: "phone", placeholder: "Số điện thoại", label: "Phone" },
+          { name: "email", placeholder: "Email", label: "Email" },
         ].map((field, i) => (
           <motion.div
             key={field.name}
@@ -97,7 +96,7 @@ export default function ContactForm() {
         >
           <Textarea
             {...register("message")}
-            placeholder="Write your message..."
+            placeholder="Viết tin nhắn..."
             className={`bg-white/10 text-white placeholder-white/50 ${
               errors.message ? "border-red-500" : ""
             }`}
@@ -115,13 +114,25 @@ export default function ContactForm() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <Button
+          <motion.button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:opacity-90 transition text-white font-semibold"
+            whileHover={{
+              scale: 1.08,
+              boxShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
+              textShadow: "0 0 8px rgba(255, 255, 255, 0.7)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="
+              w-full px-8 py-3 rounded-xl font-semibold uppercase tracking-wide
+              text-white cursor-pointer border border-gray-700
+              shadow-md bg-gray-900 transition-colors duration-200
+              disabled:opacity-50 disabled:cursor-not-allowed
+            "
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </Button>
+            {isSubmitting ? "Đang gửi..." : "Gửi tin nhắn"}
+          </motion.button>
         </motion.div>
       </form>
     </motion.div>

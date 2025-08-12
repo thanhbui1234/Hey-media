@@ -142,7 +142,7 @@ const Footer = () => {
                 <p className="text-gray-400">
                   86 Đại An
                   <br />
-                  Văn Quán, Hà Đông
+                   Phường Hà Đông
                   <br />
                   Hà Nội, Việt Nam
                 </p>

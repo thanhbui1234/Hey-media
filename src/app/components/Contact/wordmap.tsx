@@ -8,11 +8,6 @@ export function WorldMapDemo() {
         <p className="font-bold text-xl md:text-4xl dark:text-white text-black">
           Kết nối toàn quốc
         </p>
-        <p className="text-sm md:text-lg text-neutral-500 max-w-2xl mx-auto py-4">
-          Break free from traditional boundaries. Work from anywhere, at the
-          comfort of your own studio apartment. Perfect for Nomads and
-          Travellers.
-        </p>
       </div>
       <WorldMap
         dots={[
