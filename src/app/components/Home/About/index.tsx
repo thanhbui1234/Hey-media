@@ -77,7 +77,7 @@ export default function AboutCompany() {
                     href="/about"
                     className="text-white cursor-pointer font-light tracking-wide flex items-center gap-2"
                   >
-                    <span className="relative group inline-block transition-colors duration-300 text-white group-hover:text-orange-400 group-hover:drop-shadow-[0_0_5px_orange] text-3xl">
+                    <span className="relative group inline-block transition-colors duration-300 text-white group-hover:text-orange-400 group-hover:drop-shadow-[0_0_5px_orange] text-2xl">
                       Chi tiết
                       <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-80"></span>
                     </span>

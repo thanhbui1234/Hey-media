@@ -3,7 +3,7 @@
 /* @import "tw-animate-css"; */
 @layer components {
   .framer-text {
-    @apply font-[300] text-[36px] text-white/50 tracking-[-0.08em] text-justify;
+    @apply font-[400] text-[26px] text-white/50 tracking-[-0.08em] text-justify;
   }
 
   .framer-text-dark {
