@@ -132,7 +132,7 @@ const Footer = () => {
         >
           {/* Studio Info */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-6 text-white">Studio</h3>
+            {/* <h3 className="text-2xl font-bold mb-6 text-white">Studio</h3> */}
             <p className="text-gray-300 text-base leading-relaxed mb-6">
              Hey Media là đơn vị chuyên sản xuất nội dung truyền thông marketing cho thương hiệu, doanh nghiệp và cá nhân.
             </p>
