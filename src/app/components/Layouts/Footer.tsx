@@ -91,8 +91,7 @@ const Footer = () => {
             className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            Không chỉ giới hạn trong video, chúng tôi là đồng minh sáng tạo của
-            bạn
+            Have Client is Joy
           </motion.p>
 
           <motion.div
