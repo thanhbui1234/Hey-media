@@ -9,9 +9,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
-const SERVICE_ID = "service_czvxv2d";
-const TEMPLATE_ID = "template_7yvjaxf"; // ⚠️ Thay bằng template ID thực tế const PUBLIC_KEY = "NYWVXs7DTaTJRO95o"; // ⚠️ Thay bằng public key
-const PUBLIC_KEY = "NYWVXs7DTaTJRO95o"; // ⚠️ Thay bằng public key
+const SERVICE_ID = "service_80o1xck";
+const TEMPLATE_ID = "template_w3pt35y"; // ⚠️ Thay bằng template ID thực tế const PUBLIC_KEY = "NYWVXs7DTaTJRO95o"; // ⚠️ Thay bằng public key
+const PUBLIC_KEY = "bCXDU2IyNd-XXEVjb"; // ⚠️ Thay bằng public key
 const formSchema = z.object({
   name: z.string().min(2, "Tên không được bỏ trống"),
   phone: z.string().min(6, "Số điện thoại không được bỏ trống"),
