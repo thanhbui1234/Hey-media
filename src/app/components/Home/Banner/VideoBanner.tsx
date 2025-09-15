@@ -1,23 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const VideoBanner = () => {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="relative w-full flex justify-center items-center"
-    >
+    <div className="relative w-full flex justify-center items-center">
       <div className="w-full aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
-        <img
-          src="nenshoe.png"
-          alt="About us banner"
-          className="absolute inset-0 w-full h-full object-cover"
+        <iframe
+          src="https://www.youtube.com/embed/cUKyPcTvPXk?autoplay=1&mute=1&loop=1&playlist=cUKyPcTvPXk&controls=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1"
+          className="absolute pointer-events-none"
+          style={{
+            width: '120%',
+            height: '120%',
+            top: '-10%',
+            left: '-10%',
+            border: 'none',
+            objectFit: 'cover',
+          }}
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
