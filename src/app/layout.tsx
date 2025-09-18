@@ -14,23 +14,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hey media",
-  description: "Hey media ",
+  title: "Hey Media - Sản xuất phim chuyên nghiệp",
+  description: "Hey Media - Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp. Dịch vụ quay phim, chụp ảnh, livestream cho doanh nghiệp.",
+  keywords: "sản xuất phim, TVC, video marketing, quay phim doanh nghiệp, chụp ảnh, livestream",
+  authors: [{ name: "Hey Media" }],
   icons: {
     icon: "/img/Media.png",
-    apple: "/apple-touch-icon.png",
+    apple: "/img/Media.png",
   },
+  metadataBase: new URL("https://heymedia.vn"),
   openGraph: {
-    title: "Hey media",
-    description: "Hey media",
-    url: "https://heymedia.vn", // đổi thành domain của bạn
-    siteName: "Hey media",
+    title: "Hey Media - Sản xuất phim chuyên nghiệp",
+    description: "Hey Media - Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp. Dịch vụ quay phim, chụp ảnh, livestream cho doanh nghiệp.",
+    url: "https://heymedia.vn",
+    siteName: "Hey Media",
     images: [
       {
-        url: "https://i.postimg.cc/hjNwVsv2/Media.png", // ảnh preview khi share
-        width: 1200,
-        height: 630,
-        alt: "Hey media preview",
+        url: "/img/Media.png", // sử dụng đường dẫn local sẽ được resolve với metadataBase
+        width: 1433,
+        height: 900,
+        alt: "Hey Media - Sản xuất phim chuyên nghiệp",
+        type: "image/png",
       },
     ],
     locale: "vi_VN",
@@ -38,9 +42,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hey media",
-    description: "Hey media",
-    images: ["https://i.postimg.cc/hjNwVsv2/Media.png"], // ảnh preview khi share lên Twitter
+    title: "Hey Media - Sản xuất phim chuyên nghiệp",
+    description: "Hey Media - Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp. Dịch vụ quay phim, chụp ảnh, livestream cho doanh nghiệp.",
+    images: ["/img/Media.png"], // sử dụng đường dẫn local
+    creator: "@heymedia",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-site-verification-code", // thêm google verification nếu có
   },
 };
 
