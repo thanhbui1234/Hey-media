@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://heymedia.vn"),
   openGraph: {
-    title: "Hey Media - Sản xuất phim chuyên nghiệp",
+    title: "Hey Media",
     description: "Hey Media - Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp. Dịch vụ quay phim, chụp ảnh, livestream cho doanh nghiệp.",
     url: "https://heymedia.vn",
     siteName: "Hey Media",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hey Media - Sản xuất phim chuyên nghiệp",
+    title: "Hey Media",
     description: "Hey Media - Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp. Dịch vụ quay phim, chụp ảnh, livestream cho doanh nghiệp.",
     images: ["/img/Media.png"], // sử dụng đường dẫn local
     creator: "@heymedia",
