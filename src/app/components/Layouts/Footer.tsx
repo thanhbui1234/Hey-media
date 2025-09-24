@@ -91,7 +91,7 @@ const Footer = () => {
             className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
-            Have Client is Joy
+            Frame Your Vision
           </motion.p>
 
           <motion.div
