@@ -186,11 +186,10 @@ const BannerSlideFoot = () => {
               <motion.button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide
+                className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
                     ? "w-12 bg-white"
                     : "w-2 bg-white/40 hover:bg-white/60"
-                }`}
+                  }`}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 disabled={isAnimating}

@@ -228,34 +228,3 @@ a:focus-visible {
   outline: none !important;
   box-shadow: none !important;
 }
-
-/* Thêm vào globals.css */
-iframe[src*="youtube.com"] {
-  pointer-events: none !important;
-  user-select: none !important;
-}
-
-/* Ẩn tất cả YouTube UI elements ngay lập tức */
-iframe[src*="youtube.com"]::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-/* Ẩn YouTube player UI */
-.ytp-chrome-top,
-.ytp-show-cards-title,
-.ytp-title,
-.ytp-chrome-bottom,
-.ytp-progress-bar-container,
-.ytp-chrome-controls {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}

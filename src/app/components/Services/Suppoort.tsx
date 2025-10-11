@@ -1,3 +1,4 @@
+
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -10,7 +11,42 @@ interface InfiniteSliderProps {
   mediaType?: "image" | "video";
 }
 
-// Modal component để hiển thị video
+// Utility function để detect và convert YouTube URL
+function getYouTubeId(url: string): string | null {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\?\/]+)/,
+    /youtube\.com\/watch\?.*v=([^&]+)/
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+}
+
+function isYouTubeUrl(url: string): boolean {
+  return url.includes('youtube.com') || url.includes('youtu.be');
+}
+
+function getYouTubeThumbnail(url: string): string {
+  const videoId = getYouTubeId(url);
+  if (videoId) {
+    return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  }
+  return '';
+}
+
+function getYouTubeEmbedUrl(url: string): string {
+  const videoId = getYouTubeId(url);
+  if (videoId) {
+    // Thêm các tham số để controls hoạt động tốt
+    return `https://www.youtube.com/embed/${videoId}?autoplay=0&controls=1&modestbranding=1&rel=0&enablejsapi=1&fs=1&playsinline=1&cc_load_policy=1&iv_load_policy=3`;
+  }
+  return url;
+}
+
+// Modal component để hiển thị video (hỗ trợ cả local và YouTube)
 function VideoModal({
   src,
   isOpen,
@@ -23,24 +59,26 @@ function VideoModal({
   const modalVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
-  const hideControlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hideControlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isYouTube = isYouTubeUrl(src);
 
   useEffect(() => {
-    if (isOpen && modalVideoRef.current) {
+    if (isOpen && !isYouTube && modalVideoRef.current) {
       modalVideoRef.current.currentTime = 0;
       setIsPlaying(false);
       setControlsVisible(true);
     }
-  }, [isOpen]);
+  }, [isOpen, isYouTube]);
 
-  // Auto-hide controls after 3 seconds of inactivity
   const resetHideControlsTimer = () => {
     setControlsVisible(true);
     if (hideControlsTimeoutRef.current) {
       clearTimeout(hideControlsTimeoutRef.current);
     }
     hideControlsTimeoutRef.current = setTimeout(() => {
-      setControlsVisible(false);
+      if (!isYouTube) {
+        setControlsVisible(false);
+      }
     }, 3000);
   };
 
@@ -50,7 +88,7 @@ function VideoModal({
 
   const handleVideoClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (modalVideoRef.current) {
+    if (!isYouTube && modalVideoRef.current) {
       if (isPlaying) {
         modalVideoRef.current.pause();
       } else {
@@ -60,64 +98,194 @@ function VideoModal({
   };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
+    // Chỉ đóng khi click vào backdrop, không phải video/iframe
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  const handleIframeClick = (e: React.MouseEvent) => {
+    // Ngăn việc đóng modal khi click vào iframe
+    e.stopPropagation();
   };
 
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-4"
       onClick={handleBackdropClick}
-      onMouseMove={handleMouseMove}
     >
-      <div className="relative max-w-4xl w-auto">
+      <div className="relative max-w-5xl w-full">
         {/* Close button */}
         <button
           onClick={onClose}
-          className={`absolute -top-12 right-0 p-2 text-white hover:bg-white/20 rounded-full transition-all z-10 ${
-            controlsVisible ? "opacity-100" : "opacity-0"
-          }`}
+          className="absolute -top-12 right-0 p-2 text-white hover:bg-white/20 rounded-full transition-all z-10 opacity-100"
         >
           <X className="w-6 h-6" />
         </button>
 
         {/* Video container */}
         <div className="relative bg-black rounded-lg overflow-hidden shadow-2xl">
-          <video
-            ref={modalVideoRef}
-            src={src}
-            className="max-w-[80vw] max-h-[70vh] w-auto h-auto cursor-pointer"
-            controls
-            controlsList="nodownload"
-            onClick={handleVideoClick}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            onLoadedData={() => {
-              // Video loaded, ready to play
-              console.log("Video loaded");
-            }}
-          >
-            Your browser does not support the video tag.
-          </video>
-
-          {/* Custom play overlay - chỉ hiện khi video pause và không có controls */}
-          {!isPlaying && (
+          {isYouTube ? (
+            // YouTube iframe - không có overlay, cho phép tương tác trực tiếp
             <div
-              className={`absolute inset-0 flex items-center justify-center transition-opacity ${
-                controlsVisible ? "opacity-100" : "opacity-80"
-              }`}
-              onClick={handleVideoClick}
+              className="relative w-full"
+              style={{ paddingBottom: '56.25%' }}
             >
-              <div className="bg-black/70 p-6 rounded-full hover:bg-black/80 transition-colors">
-                <Play className="w-12 h-12 text-white ml-1" />
-              </div>
+              <iframe
+                src={getYouTubeEmbedUrl(src)}
+                className="absolute top-0 left-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowFullScreen
+                title="YouTube video"
+                style={{
+                  border: 'none',
+                  pointerEvents: 'auto',
+                  zIndex: 1
+                }}
+                frameBorder="0"
+                scrolling="no"
+              />
+            </div>
+          ) : (
+            // Local video
+            <div onClick={(e) => e.stopPropagation()}>
+              <video
+                ref={modalVideoRef}
+                src={src}
+                className="max-w-[80vw] max-h-[70vh] w-auto h-auto cursor-pointer mx-auto"
+                controls
+                controlsList="nodownload"
+                onClick={handleVideoClick}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              >
+                Your browser does not support the video tag.
+              </video>
+
+              {/* Custom play overlay - chỉ cho local video */}
+              {!isPlaying && (
+                <div
+                  className={`absolute inset-0 flex items-center justify-center transition-opacity ${controlsVisible ? "opacity-100" : "opacity-80"
+                    }`}
+                  onClick={handleVideoClick}
+                >
+                  <div className="bg-black/70 p-6 rounded-full hover:bg-black/80 transition-colors">
+                    <Play className="w-12 h-12 text-white ml-1" />
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+// Video Item Component cho local videos
+function VideoItem({
+  src,
+  index,
+  itemWidth,
+  isHovered,
+  onHover,
+  onClick,
+}: {
+  src: string;
+  index: number;
+  itemWidth: number;
+  isHovered: boolean;
+  onHover: (hovered: boolean) => void;
+  onClick: () => void;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isHovered) {
+      video.play().catch(() => {
+        // Ignore autoplay errors
+      });
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, [isHovered]);
+
+  return (
+    <div
+      className="flex-shrink-0 rounded-lg md:rounded-xl overflow-hidden border border-white/10 relative group cursor-pointer"
+      style={{
+        width: `${itemWidth}px`,
+        height: `${itemWidth}px`,
+      }}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
+      onClick={onClick}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        className="w-full h-full object-cover transition-transform group-hover:scale-105"
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      >
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Play overlay */}
+      <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="bg-black/60 p-3 rounded-full">
+          <Play className="w-6 h-6 text-white ml-1" />
+        </div>
+      </div>
+
+      {/* Video indicator */}
+      <div className="absolute top-2 right-2 bg-black/60 px-2 py-1 rounded text-xs text-white">
+        VIDEO
+      </div>
+    </div>
+  );
+}
+
+// YouTube Thumbnail Item Component
+function YouTubeItem({
+  src,
+  index,
+  itemWidth,
+  onClick,
+}: {
+  src: string;
+  index: number;
+  itemWidth: number;
+  onClick: () => void;
+}) {
+  const thumbnailUrl = getYouTubeThumbnail(src);
+
+  return (
+    <div
+      className="flex-shrink-0 rounded-lg md:rounded-xl overflow-hidden border border-white/10 relative group cursor-pointer"
+      style={{
+        width: `${itemWidth}px`,
+        height: `${itemWidth}px`,
+      }}
+      onClick={onClick}
+    >
+      <img
+        src={thumbnailUrl}
+        alt={`YouTube video ${index}`}
+        className="w-full h-full object-cover transition-transform group-hover:scale-105"
+        loading="lazy"
+      />
+
+      {/* Subtle hover overlay */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
     </div>
   );
 }
@@ -138,13 +306,6 @@ export default function InfiniteSlider({
   const [modalVideoSrc, setModalVideoSrc] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  console.log(
-    "Slider rendered with images:",
-    images.length,
-    "mediaType:",
-    mediaType
-  );
 
   // Tính toán kích thước responsive
   useEffect(() => {
@@ -248,22 +409,27 @@ export default function InfiniteSlider({
 
           <div className="relative">
             {/* Previous Button */}
-            <button
-              onClick={handlePrevious}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-black/60 hover:bg-black/80 transition-colors duration-200 border border-white/20"
-              aria-label="Previous"
-            >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
-            </button>
+            {images.length >= 6 && (
+              <>
+                <button
+                  onClick={handlePrevious}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-black/60 hover:bg-black/80 transition-colors duration-200 border border-white/20"
+                  aria-label="Previous"
+                >
+                  <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-black/60 hover:bg-black/80 transition-colors duration-200 border border-white/20"
+                  aria-label="Next"
+                >
+                  <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                </button></>
+            )}
 
-            {/* Next Button */}
-            <button
-              onClick={handleNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-black/60 hover:bg-black/80 transition-colors duration-200 border border-white/20"
-              aria-label="Next"
-            >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
-            </button>
+
+
+
 
             <div className="overflow-hidden">
               <div
@@ -272,61 +438,40 @@ export default function InfiniteSlider({
                 style={{ width: "fit-content" }}
               >
                 {images.map((src, i) => (
-                  <div
-                    key={i}
-                    className="flex-shrink-0 rounded-lg md:rounded-xl overflow-hidden border border-white/10 relative group cursor-pointer"
-                    style={{
-                      width: `${itemWidth}px`,
-                      height: `${itemWidth}px`,
-                    }}
-                    onMouseEnter={() => setHoveredIndex(i)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={() =>
-                      mediaType === "video" ? handleVideoClick(src) : undefined
-                    }
-                  >
+                  <div key={i}>
                     {mediaType === "video" ? (
-                      <>
-                        <video
+                      isYouTubeUrl(src) ? (
+                        <YouTubeItem
                           src={src}
-                          className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                          muted
-                          loop
-                          playsInline
-                          preload="metadata"
-                          ref={(el) => {
-                            if (el) {
-                              if (hoveredIndex === i) {
-                                el.play().catch(() => {});
-                              } else {
-                                el.pause();
-                                el.currentTime = 0;
-                              }
-                            }
-                          }}
-                        >
-                          Your browser does not support the video tag.
-                        </video>
-
-                        {/* Play overlay for videos */}
-                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                          <div className="bg-black/60 p-3 rounded-full">
-                            <Play className="w-6 h-6 text-white ml-1" />
-                          </div>
-                        </div>
-
-                        {/* Video indicator */}
-                        <div className="absolute top-2 right-2 bg-black/60 px-2 py-1 rounded text-xs text-white">
-                          VIDEO
-                        </div>
-                      </>
+                          index={i}
+                          itemWidth={itemWidth}
+                          onClick={() => handleVideoClick(src)}
+                        />
+                      ) : (
+                        <VideoItem
+                          src={src}
+                          index={i}
+                          itemWidth={itemWidth}
+                          isHovered={hoveredIndex === i}
+                          onHover={(hovered) => setHoveredIndex(hovered ? i : null)}
+                          onClick={() => handleVideoClick(src)}
+                        />
+                      )
                     ) : (
-                      <img
-                        src={src}
-                        alt={`Slide ${i}`}
-                        className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                        loading="lazy"
-                      />
+                      <div
+                        className="flex-shrink-0 rounded-lg md:rounded-xl overflow-hidden border border-white/10 relative group"
+                        style={{
+                          width: `${itemWidth}px`,
+                          height: `${itemWidth}px`,
+                        }}
+                      >
+                        <img
+                          src={src}
+                          alt={`Slide ${i}`}
+                          className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
                     )}
                   </div>
                 ))}
@@ -343,56 +488,5 @@ export default function InfiniteSlider({
         onClose={closeModal}
       />
     </>
-  );
-}
-
-// Demo component với sample data để test
-export function SliderDemo() {
-  const sampleImages = [
-    "https://picsum.photos/220/220?random=1",
-    "https://picsum.photos/220/220?random=2",
-    "https://picsum.photos/220/220?random=3",
-    "https://picsum.photos/220/220?random=4",
-    "https://picsum.photos/220/220?random=5",
-    "https://picsum.photos/220/220?random=6",
-  ];
-
-  const sampleVideos = [
-    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-  ];
-
-  return (
-    <div className="min-h-screen bg-black p-4">
-      <InfiniteSlider
-        images={sampleImages}
-        title="Our Portfolio - Images"
-        description={[
-          "Những dự án tiêu biểu của chúng tôi",
-          "Với hơn 10 năm kinh nghiệm",
-          "Chúng tôi tự hào mang đến những sản phẩm chất lượng cao",
-        ]}
-        direction="left"
-        speed={0.8}
-        mediaType="image"
-      />
-
-      <InfiniteSlider
-        images={sampleVideos}
-        title="Our Portfolio - Videos"
-        description={[
-          "Video showcase của các dự án",
-          "Trải nghiệm trực quan và sinh động",
-          "Khám phá quy trình sáng tạo của chúng tôi",
-        ]}
-        direction="right"
-        speed={0.6}
-        mediaType="video"
-      />
-    </div>
   );
 }
