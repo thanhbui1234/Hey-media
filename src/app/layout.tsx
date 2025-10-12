@@ -77,6 +77,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Hey Media",
+              url: "https://www.heymediavn.com",
+              logo: "https://www.heymediavn.com/img/logodemo.jpg",
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
