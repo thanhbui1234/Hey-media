@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Hey Media",
     description:
       "Hey Media - Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp. Dịch vụ quay phim, chụp ảnh, livestream cho doanh nghiệp.",
-    url: "https://heymedia.vn",
+    url: "https://www.heymediavn.com",
     siteName: "Hey Media",
     images: [
       {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: "Hey Media",
     description:
       "Hey Media - Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp. Dịch vụ quay phim, chụp ảnh, livestream cho doanh nghiệp.",
-    images: ["/img/Media.png"],
+    images: ["/img/logodemo.jpg"],
     creator: "@heymedia",
   },
   robots: {
