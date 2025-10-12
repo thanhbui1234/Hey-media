@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     "Hey Media, sản xuất phim, TVC, video marketing, quay phim doanh nghiệp, chụp ảnh, livestream",
   authors: [{ name: "Hey Media", url: "https://heymedia.vn" }],
   icons: {
-    icon: "/img/Media.png",
-    apple: "/img/Media.png",
+    icon: "/img/logodemo.jpg",
+    apple: "/img/logodemo.jpg",
   },
   openGraph: {
     title: "Hey Media - Sản xuất phim chuyên nghiệp",
