@@ -106,7 +106,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Hey Media",
   url: "https://www.heymediavn.com",
-  logo: "https://heymedia.vn/img/logodemo.jpg",
+  logo: "https://www.heymediavn.com/img/logodemo.jpg",
   description: "Đơn vị sản xuất phim, TVC, video marketing chuyên nghiệp",
   address: {
     "@type": "PostalAddress",
