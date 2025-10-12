@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     siteName: "Hey Media",
     images: [
       {
-        url: "/img/Media.png",
+        url: "/img/logodemo.jpg",
         width: 1433,
         height: 900,
-        alt: "Hey Media - Sản xuất phim chuyên nghiệp",
+        alt: "Hey Media",
       },
     ],
     locale: "vi_VN",
