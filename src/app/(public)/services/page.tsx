@@ -21,7 +21,7 @@ const videosDoanhNghiep = [
   "https://youtu.be/NWNAB8boTew",
   "https://youtu.be/-J7uYq4g5AE",
   "https://youtu.be/m6jMaB81_aE",
-  "https://youtu.be/tUPz-WqEPew"
+  "https://youtu.be/tUPz-WqEPew",
 ]
 const videoTvc = [
   "https://www.youtube.com/https://youtu.be/WbCJFFz-aVE?v=eZx9B6z-e7g",
@@ -37,7 +37,10 @@ const videoTvc = [
   "https://youtu.be/Inr8BOdk8jI",
   "https://youtu.be/UYIKD9fhXoc",
   "https://youtu.be/d5Ni0eOZ0zc",
-  "https://youtu.be/i6vN76L2yjY"
+  "https://youtu.be/i6vN76L2yjY",
+  "https://www.youtube.com/embed/DoYTJ86NELQ",
+  "https://youtu.be/4l-Ycm9fxg0"
+
 ]
 
 const vidoeTikTok = [
@@ -47,7 +50,11 @@ const vidoeTikTok = [
 
 const videoLivestream = [
   "https://youtu.be/Ooo5fRt5B2M",
-  "https://youtu.be/9Pyso_iGTFI"
+  "https://youtu.be/9Pyso_iGTFI",
+  "https://youtu.be/RdBldQsV7_Y",
+  "https://youtu.be/M-4accEXWHg",
+  "https://youtu.be/1nypXsVMPf4",
+  "https://youtu.be/SdatNr2veFo"
 ]
 const ServicesContent = () => {
   const searchParams = useSearchParams();
